@@ -15,7 +15,7 @@ type Intercepter struct {
 }
 
 func (that *Intercepter) Init() *Intercepter {
-	that.Key = "&key=CD8FC1C3E75EA36499BEFBB2E93C7142"
+	that.Key = "&key=ABC"
 	return that
 }
 
