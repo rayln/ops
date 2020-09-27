@@ -1,0 +1,401 @@
+[DBUG] 2020/07/13 18:35 MVC dependencies of 'controller.TestController':
+[1] Static binding: '*xorm.EngineGroup' for field 'Engine *xorm.EngineGroup'
+[2] Static binding: '*golog.Logger' for field 'Logger *golog.Logger'
+[3] Static binding: '*util.Redis' for field 'Redis *util.Redis'
+
+[DBUG] 2020/07/13 18:35 MVC dependencies of method 'controller.TestController.PostTest':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2020/07/13 18:35 HEAD: /static/*file -> github.com/kataras/iris/core/router.StripPrefix.func1()
+[DBUG] 2020/07/13 18:35 GET: /static/*file -> github.com/kataras/iris/core/router.StripPrefix.func1()
+[DBUG] 2020/07/13 18:35 GET: / -> main.newApp.func1()
+[DBUG] 2020/07/13 18:35 POST: /test -> controller.TestController.PostTest() and 5 more
+[DBUG] 2020/07/13 18:35 Application: 1 registered view engine(s)
+[DBUG] 2020/07/13 18:35 Application: running using 1 host(s)
+[DBUG] 2020/07/13 18:35 Host: addr is :8009
+[DBUG] 2020/07/13 18:35 Host: virtual host is localhost:8009
+[DBUG] 2020/07/13 18:35 Host: register startup notifier
+[DBUG] 2020/07/13 18:35 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+[DBUG] 2020/07/13 18:35 Host: server will ignore the following errors: [http: Server closed]
+Now listening on: http://localhost:8009
+Application started. Press CTRL+C to shut down.
+[DBUG] 2020/07/13 19:41 MVC dependencies of 'controller.TestController':
+[1] Static binding: '*xorm.EngineGroup' for field 'Engine *xorm.EngineGroup'
+[2] Static binding: '*golog.Logger' for field 'Logger *golog.Logger'
+[3] Static binding: '*util.Redis' for field 'Redis *util.Redis'
+
+[DBUG] 2020/07/13 19:41 MVC dependencies of method 'controller.TestController.PostTest':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2020/07/13 19:41 HEAD: /static/*file -> github.com/kataras/iris/core/router.StripPrefix.func1()
+[DBUG] 2020/07/13 19:41 GET: /static/*file -> github.com/kataras/iris/core/router.StripPrefix.func1()
+[DBUG] 2020/07/13 19:41 GET: / -> main.newApp.func1()
+[DBUG] 2020/07/13 19:41 POST: /test -> controller.TestController.PostTest() and 5 more
+[DBUG] 2020/07/13 19:41 Application: 1 registered view engine(s)
+[DBUG] 2020/07/13 19:41 Application: running using 1 host(s)
+[DBUG] 2020/07/13 19:41 Host: addr is :8009
+[DBUG] 2020/07/13 19:41 Host: virtual host is localhost:8009
+[DBUG] 2020/07/13 19:41 Host: register startup notifier
+[DBUG] 2020/07/13 19:41 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+[DBUG] 2020/07/13 19:41 Host: server will ignore the following errors: [http: Server closed]
+Now listening on: http://localhost:8009
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/07/13 20:03 path:/test  requestStr:nonce=8689&none=0&key=CD8FC1C3E75EA36499BEFBB2E93C7142  webSign:0f15cde14b0052bd7f103b08e9ce5b20  sign:0f15cde14b0052bd7f103b08e9ce5b20
+[INFO] 2020/07/13 20:03 farmTestInfo: &{0     0}
+[HTTP] 2020/07/13 20:03  耗时: 407.0678ms  状态: 200  IP地址: 192.168.50.210  请求: POST  路径: /test
+[DBUG] 2020/07/13 20:17 MVC Controller [controller.TestController] [Scope=Stateless]
+[DBUG] 2020/07/13 20:17 Dependencies:
+	[1] Static binding: &xorm.EngineGroup{Engine:(*xorm.Engine)(0xc000334000), slaves:[]*xorm.Engine{(*xorm.Engine)(0xc0003340e0)}, policy:(xorm.GroupPolicyHandler)(0x78ca10)} for field 'Engine *xorm.EngineGroup'
+	[2] Static binding: &golog.Logger{Prefix:"", Level:0x5, TimeFormat:"2006/01/02 15:04", NewLine:true, mu:sync.Mutex{state:0, sema:0x0}, Printer:(*pio.Printer)(0xc00021a000), handlers:[]golog.Handler(nil), once:sync.Once{done:0x0, m:sync.Mutex{state:0, sema:0x0}}, logs:sync.Pool{noCopy:sync.noCopy{}, local:(unsafe.Pointer)(0xc0003c4000), localSize:0x8, victim:(unsafe.Pointer)(nil), victimSize:0x0, New:(func() interface {})(nil)}, children:(*golog.loggerMap)(0xc000214080)} for field 'Logger *golog.Logger'
+	[3] Static binding: &util.Redis{Pool:(*redis.Pool)(0xc0003b6000)} for field 'Redis *util.Redis'
+[DBUG] 2020/07/13 20:17 [./main.go:51] GET: / -> main.newApp.func1()
+[DBUG] 2020/07/13 20:17 [./config\app_controller.go:12] POST: /test -> controller.TestController.PostTest() and 3 more
+[DBUG] 2020/07/13 20:17 Application: 1 registered view engine(s)
+[DBUG] 2020/07/13 20:17 Application: running using 1 host(s)
+[DBUG] 2020/07/13 20:17 Host: addr is :8009
+[DBUG] 2020/07/13 20:17 Host: virtual host is localhost:8009
+[DBUG] 2020/07/13 20:17 Host: register startup notifier
+[DBUG] 2020/07/13 20:17 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+[DBUG] 2020/07/13 20:17 Host: server will ignore the following errors: [http: Server closed]
+Now listening on: http://localhost:8009
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/07/13 20:17 path:/test  requestStr:nonce=8689&none=0&key=CD8FC1C3E75EA36499BEFBB2E93C7142  webSign:0f15cde14b0052bd7f103b08e9ce5b20  sign:0f15cde14b0052bd7f103b08e9ce5b20
+[HTTP Server] http: panic serving 192.168.50.210:53420: reflect: Call with too few input arguments
+goroutine 36 [running]:
+net/http.(*conn).serve.func1(0xc00021c6e0)
+	C:/Go/src/net/http/server.go:1772 +0x140
+panic(0xc79740, 0xf14080)
+	C:/Go/src/runtime/panic.go:975 +0x3f1
+reflect.Value.call(0xd47ee0, 0xc0003f4190, 0x1213, 0xdbebc9, 0x4, 0x1592920, 0x0, 0x0, 0x6, 0xc0000c34c8, ...)
+	C:/Go/src/reflect/value.go:377 +0x136f
+reflect.Value.Call(0xd47ee0, 0xc0003f4190, 0x1213, 0x1592920, 0x0, 0x0, 0x1213, 0xc0005a4670, 0xc0004e21d0)
+	C:/Go/src/reflect/value.go:321 +0xbb
+github.com/kataras/iris/v12/mvc.(*ControllerActivator).handlerOf.func2(0xf50c80, 0xc00046c120)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/mvc/controller.go:497 +0x3c9
+github.com/kataras/iris/v12/context.(*context).Proceed(0xc00046c120, 0xc000463200, 0xf13db0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1295 +0x4f
+github.com/kataras/iris/v12/core/router.ExecutionOptions.buildHandler.func1(0xf50c80, 0xc00046c120)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/handler_execution_rules.go:78 +0x44
+github.com/kataras/iris/v12/context.DefaultNext(0xf50c80, 0xc00046c120)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1343 +0x10e
+github.com/kataras/iris/v12/context.(*context).Next(0xc00046c120)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1352 +0x45
+main.handle.func1(0xf50c80, 0xc00046c120)
+	D:/Go/workspace_test/ops/main.go:105 +0x9f
+github.com/kataras/iris/v12/context.DefaultNext(0xf50c80, 0xc00046c120)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1343 +0x10e
+github.com/kataras/iris/v12/context.(*context).Next(0xc00046c120)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1352 +0x45
+github.com/kataras/iris/v12/middleware/logger.(*requestLoggerMiddleware).ServeHTTP(0xc00030aa80, 0xf50c80, 0xc00046c120)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/middleware/logger/logger.go:50 +0x96
+github.com/kataras/iris/v12/context.Do(0xf50c80, 0xc00046c120, 0xc000214ea0, 0x4, 0x4)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1030 +0x88
+github.com/kataras/iris/v12/context.(*context).Do(0xc00046c120, 0xc000214ea0, 0x4, 0x4)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1217 +0x5c
+github.com/kataras/iris/v12/core/router.(*routerHandler).HandleRequest(0xc000214fa0, 0xf50c80, 0xc00046c120)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/handler.go:250 +0x55d
+github.com/kataras/iris/v12/core/router.(*Router).BuildRouter.func1(0xf355a0, 0xc00049c0e0, 0xc0003fe000)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/router.go:135 +0x96
+github.com/kataras/iris/v12/core/router.(*Router).ServeHTTP(0xc0003f4280, 0xf355a0, 0xc00049c0e0, 0xc0003fe000)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/router.go:227 +0x4f
+net/http.serverHandler.ServeHTTP(0xc00049c000, 0xf355a0, 0xc00049c0e0, 0xc0003fe000)
+	C:/Go/src/net/http/server.go:2807 +0xaa
+net/http.(*conn).serve(0xc00021c6e0, 0xf37ea0, 0xc00021e5c0)
+	C:/Go/src/net/http/server.go:1895 +0x873
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2933 +0x363
+[DBUG] 2020/07/13 20:18 MVC Controller [controller.TestController] [Scope=Stateless]
+[DBUG] 2020/07/13 20:18 Dependencies:
+	[1] Static binding: &xorm.EngineGroup{Engine:(*xorm.Engine)(0xc0001de000), slaves:[]*xorm.Engine{(*xorm.Engine)(0xc0001de0e0)}, policy:(xorm.GroupPolicyHandler)(0x78ca10)} for field 'Engine *xorm.EngineGroup'
+	[2] Static binding: &golog.Logger{Prefix:"", Level:0x5, TimeFormat:"2006/01/02 15:04", NewLine:true, mu:sync.Mutex{state:0, sema:0x0}, Printer:(*pio.Printer)(0xc00029a000), handlers:[]golog.Handler(nil), once:sync.Once{done:0x0, m:sync.Mutex{state:0, sema:0x0}}, logs:sync.Pool{noCopy:sync.noCopy{}, local:(unsafe.Pointer)(0xc00030e000), localSize:0x8, victim:(unsafe.Pointer)(nil), victimSize:0x0, New:(func() interface {})(nil)}, children:(*golog.loggerMap)(0xc0002840e0)} for field 'Logger *golog.Logger'
+	[3] Static binding: &util.Redis{Pool:(*redis.Pool)(0xc000300000)} for field 'Redis *util.Redis'
+[DBUG] 2020/07/13 20:18 [./main.go:51] GET: / -> main.newApp.func1()
+[DBUG] 2020/07/13 20:18 [./config\app_controller.go:12] POST: /test -> controller.TestController.PostTest() and 3 more
+[DBUG] 2020/07/13 20:18 Application: 1 registered view engine(s)
+[DBUG] 2020/07/13 20:18 Application: running using 1 host(s)
+[DBUG] 2020/07/13 20:18 Host: addr is :8009
+[DBUG] 2020/07/13 20:18 Host: virtual host is localhost:8009
+[DBUG] 2020/07/13 20:18 Host: register startup notifier
+[DBUG] 2020/07/13 20:18 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+[DBUG] 2020/07/13 20:18 Host: server will ignore the following errors: [http: Server closed]
+Now listening on: http://localhost:8009
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/07/13 20:18 path:/test  requestStr:nonce=8689&none=0&key=CD8FC1C3E75EA36499BEFBB2E93C7142  webSign:0f15cde14b0052bd7f103b08e9ce5b20  sign:0f15cde14b0052bd7f103b08e9ce5b20
+[HTTP Server] http: panic serving 192.168.50.210:53611: reflect: Call with too few input arguments
+goroutine 10 [running]:
+net/http.(*conn).serve.func1(0xc00006c640)
+	C:/Go/src/net/http/server.go:1772 +0x140
+panic(0xc79740, 0xf14080)
+	C:/Go/src/runtime/panic.go:975 +0x3f1
+reflect.Value.call(0xd47ee0, 0xc000172190, 0x1213, 0xdbebc9, 0x4, 0x1592920, 0x0, 0x0, 0x6, 0xc00040b4c8, ...)
+	C:/Go/src/reflect/value.go:377 +0x136f
+reflect.Value.Call(0xd47ee0, 0xc000172190, 0x1213, 0x1592920, 0x0, 0x0, 0x1213, 0xc00057c5e0, 0xc000075eb0)
+	C:/Go/src/reflect/value.go:321 +0xbb
+github.com/kataras/iris/v12/mvc.(*ControllerActivator).handlerOf.func2(0xf50c80, 0xc0000b8090)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/mvc/controller.go:497 +0x3c9
+github.com/kataras/iris/v12/context.(*context).Proceed(0xc0000b8090, 0xc0002c0000, 0xf13db0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1295 +0x4f
+github.com/kataras/iris/v12/core/router.ExecutionOptions.buildHandler.func1(0xf50c80, 0xc0000b8090)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/handler_execution_rules.go:78 +0x44
+github.com/kataras/iris/v12/context.DefaultNext(0xf50c80, 0xc0000b8090)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1343 +0x10e
+github.com/kataras/iris/v12/context.(*context).Next(0xc0000b8090)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1352 +0x45
+main.handle.func1(0xf50c80, 0xc0000b8090)
+	D:/Go/workspace_test/ops/main.go:105 +0x9f
+github.com/kataras/iris/v12/context.DefaultNext(0xf50c80, 0xc0000b8090)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1343 +0x10e
+github.com/kataras/iris/v12/context.(*context).Next(0xc0000b8090)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1352 +0x45
+github.com/kataras/iris/v12/middleware/logger.(*requestLoggerMiddleware).ServeHTTP(0xc0001aaa80, 0xf50c80, 0xc0000b8090)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/middleware/logger/logger.go:50 +0x96
+github.com/kataras/iris/v12/context.Do(0xf50c80, 0xc0000b8090, 0xc000214160, 0x4, 0x4)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1030 +0x88
+github.com/kataras/iris/v12/context.(*context).Do(0xc0000b8090, 0xc000214160, 0x4, 0x4)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1217 +0x5c
+github.com/kataras/iris/v12/core/router.(*routerHandler).HandleRequest(0xc000214260, 0xf50c80, 0xc0000b8090)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/handler.go:250 +0x55d
+github.com/kataras/iris/v12/core/router.(*Router).BuildRouter.func1(0xf355a0, 0xc0000c0000, 0xc0001ec000)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/router.go:135 +0x96
+github.com/kataras/iris/v12/core/router.(*Router).ServeHTTP(0xc000172280, 0xf355a0, 0xc0000c0000, 0xc0001ec000)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/router.go:227 +0x4f
+net/http.serverHandler.ServeHTTP(0xc0001de1c0, 0xf355a0, 0xc0000c0000, 0xc0001ec000)
+	C:/Go/src/net/http/server.go:2807 +0xaa
+net/http.(*conn).serve(0xc00006c640, 0xf37ea0, 0xc000350040)
+	C:/Go/src/net/http/server.go:1895 +0x873
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2933 +0x363
+[DBUG] 2020/07/13 20:20 MVC Controller [controller.TestController] [Scope=Stateless]
+[DBUG] 2020/07/13 20:20 Dependencies:
+	[1] Static binding: &xorm.EngineGroup{Engine:(*xorm.Engine)(0xc000292000), slaves:[]*xorm.Engine{(*xorm.Engine)(0xc0002920e0)}, policy:(xorm.GroupPolicyHandler)(0x78ca10)} for field 'Engine *xorm.EngineGroup'
+	[2] Static binding: &golog.Logger{Prefix:"", Level:0x5, TimeFormat:"2006/01/02 15:04", NewLine:true, mu:sync.Mutex{state:0, sema:0x0}, Printer:(*pio.Printer)(0xc00021c000), handlers:[]golog.Handler(nil), once:sync.Once{done:0x0, m:sync.Mutex{state:0, sema:0x0}}, logs:sync.Pool{noCopy:sync.noCopy{}, local:(unsafe.Pointer)(0xc0003f8c00), localSize:0x8, victim:(unsafe.Pointer)(nil), victimSize:0x0, New:(func() interface {})(nil)}, children:(*golog.loggerMap)(0xc0002060e0)} for field 'Logger *golog.Logger'
+	[3] Static binding: &util.Redis{Pool:(*redis.Pool)(0xc000295180)} for field 'Redis *util.Redis'
+[DBUG] 2020/07/13 20:20 MVC dependencies of method 'controller.TestController.PostTest':
+[1] Static binding: '*xorm.EngineGroup' for input position: 2 and type: '*xorm.EngineGroup'
+[2] Static binding: '*golog.Logger' for input position: 3 and type: '*golog.Logger'
+[3] Static binding: '*util.Redis' for input position: 4 and type: '*util.Redis'
+
+[DBUG] 2020/07/13 20:20 [./main.go:51] GET: / -> main.newApp.func1()
+[DBUG] 2020/07/13 20:20 [./config\app_controller.go:12] POST: /test -> controller.TestController.PostTest() and 3 more
+[DBUG] 2020/07/13 20:20 Application: 1 registered view engine(s)
+[DBUG] 2020/07/13 20:20 Application: running using 1 host(s)
+[DBUG] 2020/07/13 20:20 Host: addr is :8009
+[DBUG] 2020/07/13 20:20 Host: virtual host is localhost:8009
+[DBUG] 2020/07/13 20:20 Host: register startup notifier
+[DBUG] 2020/07/13 20:20 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+[DBUG] 2020/07/13 20:20 Host: server will ignore the following errors: [http: Server closed]
+Now listening on: http://localhost:8009
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/07/13 20:20 path:/test  requestStr:nonce=8689&none=0&key=CD8FC1C3E75EA36499BEFBB2E93C7142  webSign:0f15cde14b0052bd7f103b08e9ce5b20  sign:0f15cde14b0052bd7f103b08e9ce5b20
+[HTTP Server] http: panic serving 192.168.50.210:54053: reflect: Call using zero Value argument
+goroutine 48 [running]:
+net/http.(*conn).serve.func1(0xc0003c4be0)
+	C:/Go/src/net/http/server.go:1772 +0x140
+panic(0xc79720, 0xc00022fc60)
+	C:/Go/src/runtime/panic.go:975 +0x3f1
+reflect.Value.call(0xc0003e2f00, 0xc00020a310, 0x13, 0xdbebe9, 0x4, 0xc00038f100, 0x5, 0x5, 0xaf9268, 0xc000277cc0, ...)
+	C:/Go/src/reflect/value.go:385 +0x1337
+reflect.Value.Call(0xc0003e2f00, 0xc00020a310, 0x13, 0xc00038f100, 0x5, 0x5, 0x5, 0x5, 0xc0003ad488)
+	C:/Go/src/reflect/value.go:321 +0xbb
+github.com/kataras/iris/v12/mvc.(*ControllerActivator).handlerOf.func2(0xf50ca0, 0xc000134870)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/mvc/controller.go:493 +0x2a2
+github.com/kataras/iris/v12/context.(*context).Proceed(0xc000134870, 0xc0003e3300, 0xf13dd0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1295 +0x4f
+github.com/kataras/iris/v12/core/router.ExecutionOptions.buildHandler.func1(0xf50ca0, 0xc000134870)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/handler_execution_rules.go:78 +0x44
+github.com/kataras/iris/v12/context.DefaultNext(0xf50ca0, 0xc000134870)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1343 +0x10e
+github.com/kataras/iris/v12/context.(*context).Next(0xc000134870)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1352 +0x45
+main.handle.func1(0xf50ca0, 0xc000134870)
+	D:/Go/workspace_test/ops/main.go:105 +0x9f
+github.com/kataras/iris/v12/context.DefaultNext(0xf50ca0, 0xc000134870)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1343 +0x10e
+github.com/kataras/iris/v12/context.(*context).Next(0xc000134870)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1352 +0x45
+github.com/kataras/iris/v12/middleware/logger.(*requestLoggerMiddleware).ServeHTTP(0xc0003d6a80, 0xf50ca0, 0xc000134870)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/middleware/logger/logger.go:50 +0x96
+github.com/kataras/iris/v12/context.Do(0xf50ca0, 0xc000134870, 0xc0003b7640, 0x4, 0x4)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1030 +0x88
+github.com/kataras/iris/v12/context.(*context).Do(0xc000134870, 0xc0003b7640, 0x4, 0x4)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1217 +0x5c
+github.com/kataras/iris/v12/core/router.(*routerHandler).HandleRequest(0xc0003b7740, 0xf50ca0, 0xc000134870)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/handler.go:250 +0x55d
+github.com/kataras/iris/v12/core/router.(*Router).BuildRouter.func1(0xf355c0, 0xc00023e000, 0xc0003a8a00)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/router.go:135 +0x96
+github.com/kataras/iris/v12/core/router.(*Router).ServeHTTP(0xc0003c2280, 0xf355c0, 0xc00023e000, 0xc0003a8a00)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/router.go:227 +0x4f
+net/http.serverHandler.ServeHTTP(0xc0002921c0, 0xf355c0, 0xc00023e000, 0xc0003a8a00)
+	C:/Go/src/net/http/server.go:2807 +0xaa
+net/http.(*conn).serve(0xc0003c4be0, 0xf37ec0, 0xc0002d1500)
+	C:/Go/src/net/http/server.go:1895 +0x873
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2933 +0x363
+[DBUG] 2020/07/13 20:40 MVC Controller [controller.TestController] [Scope=Stateless]
+[DBUG] 2020/07/13 20:40 [./main.go:51] GET: / -> main.newApp.func1()
+[DBUG] 2020/07/13 20:40 [./config\app_controller.go:12] POST: /test -> controller.TestController.PostTest() and 5 more
+[DBUG] 2020/07/13 20:40 Application: 1 registered view engine(s)
+[DBUG] 2020/07/13 20:40 Application: running using 1 host(s)
+[DBUG] 2020/07/13 20:40 Host: addr is :8009
+[DBUG] 2020/07/13 20:40 Host: virtual host is localhost:8009
+[DBUG] 2020/07/13 20:40 Host: register startup notifier
+[DBUG] 2020/07/13 20:40 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+[DBUG] 2020/07/13 20:40 Host: server will ignore the following errors: [http: Server closed]
+Now listening on: http://localhost:8009
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/07/13 20:40 path:/test  requestStr:nonce=8689&none=0&key=CD8FC1C3E75EA36499BEFBB2E93C7142  webSign:0f15cde14b0052bd7f103b08e9ce5b20  sign:0f15cde14b0052bd7f103b08e9ce5b20
+[HTTP Server] http: panic serving 192.168.50.210:58283: runtime error: invalid memory address or nil pointer dereference
+goroutine 50 [running]:
+net/http.(*conn).serve.func1(0xc0005a0280)
+	C:/Go/src/net/http/server.go:1772 +0x140
+panic(0xc34f40, 0x1433230)
+	C:/Go/src/runtime/panic.go:975 +0x3f1
+ops/controller.(*TestController).PostTest(0xc0004da6c0, 0x0, 0x0)
+	D:/Go/workspace_test/ops/controller/test_controller.go:29 +0x4a
+reflect.Value.call(0xc0004da3c0, 0xc0003acee0, 0x13, 0xd16138, 0x4, 0xc00008b1e0, 0x1, 0x1, 0x18, 0xc00008b1e0, ...)
+	C:/Go/src/reflect/value.go:460 +0x8b2
+reflect.Value.Call(0xc0004da3c0, 0xc0003acee0, 0x13, 0xc00008b1e0, 0x1, 0x1, 0xbf07a0, 0xc00009a501, 0xc00008b1e0)
+	C:/Go/src/reflect/value.go:321 +0xbb
+github.com/kataras/iris/v12/mvc.(*ControllerActivator).handlerOf.func1(0xe96500, 0xc00021e1b0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/mvc/controller.go:446 +0x61
+github.com/kataras/iris/v12/context.(*context).Proceed(0xc00021e1b0, 0xc00008ab60, 0xbea680)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1295 +0x4f
+github.com/kataras/iris/v12/core/router.ExecutionOptions.buildHandler.func1(0xe96500, 0xc00021e1b0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/handler_execution_rules.go:78 +0x44
+github.com/kataras/iris/v12/context.DefaultNext(0xe96500, 0xc00021e1b0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1343 +0x10e
+github.com/kataras/iris/v12/context.(*context).Next(0xc00021e1b0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1352 +0x45
+ops/controller.(*BaseController).BeforeActivation.func1(0xe96500, 0xc00021e1b0)
+	D:/Go/workspace_test/ops/controller/base_controller.go:63 +0x3b
+github.com/kataras/iris/v12/context.DefaultNext(0xe96500, 0xc00021e1b0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1343 +0x10e
+github.com/kataras/iris/v12/context.(*context).Next(0xc00021e1b0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1352 +0x45
+main.handle.func1(0xe96500, 0xc00021e1b0)
+	D:/Go/workspace_test/ops/main.go:105 +0x9f
+github.com/kataras/iris/v12/context.DefaultNext(0xe96500, 0xc00021e1b0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1343 +0x10e
+github.com/kataras/iris/v12/context.(*context).Next(0xc00021e1b0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1352 +0x45
+github.com/kataras/iris/v12/middleware/logger.(*requestLoggerMiddleware).ServeHTTP(0xc0000ca000, 0xe96500, 0xc00021e1b0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/middleware/logger/logger.go:50 +0x96
+github.com/kataras/iris/v12/context.Do(0xe96500, 0xc00021e1b0, 0xc0003c27b0, 0x6, 0x6)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1030 +0x88
+github.com/kataras/iris/v12/context.(*context).Do(0xc00021e1b0, 0xc0003c27b0, 0x6, 0x6)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1217 +0x5c
+github.com/kataras/iris/v12/core/router.(*routerHandler).HandleRequest(0xc00008ad00, 0xe96500, 0xc00021e1b0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/handler.go:250 +0x55d
+github.com/kataras/iris/v12/core/router.(*Router).BuildRouter.func1(0xe7cea0, 0xc0002220e0, 0xc0004f6600)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/router.go:135 +0x96
+github.com/kataras/iris/v12/core/router.(*Router).ServeHTTP(0xc0001502d0, 0xe7cea0, 0xc0002220e0, 0xc0004f6600)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/router.go:227 +0x4f
+net/http.serverHandler.ServeHTTP(0xc000222000, 0xe7cea0, 0xc0002220e0, 0xc0004f6600)
+	C:/Go/src/net/http/server.go:2807 +0xaa
+net/http.(*conn).serve(0xc0005a0280, 0xe7f1e0, 0xc00027e900)
+	C:/Go/src/net/http/server.go:1895 +0x873
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2933 +0x363
+[DBUG] 2020/07/13 20:46 MVC Controller [controller.TestController] [Scope=Stateless]
+[DBUG] 2020/07/13 20:46 Dependencies:
+
+[DBUG] 2020/07/13 20:46 [./main.go:51] GET: / -> main.newApp.func1()
+[DBUG] 2020/07/13 20:46 [./config\app_controller.go:12] POST: /test -> controller.TestController.PostTest() and 5 more
+[DBUG] 2020/07/13 20:46 Application: 1 registered view engine(s)
+[DBUG] 2020/07/13 20:46 Application: running using 1 host(s)
+[DBUG] 2020/07/13 20:46 Host: addr is :8009
+[DBUG] 2020/07/13 20:46 Host: virtual host is localhost:8009
+[DBUG] 2020/07/13 20:46 Host: register startup notifier
+[DBUG] 2020/07/13 20:46 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+[DBUG] 2020/07/13 20:46 Host: server will ignore the following errors: [http: Server closed]
+Now listening on: http://localhost:8009
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/07/13 20:46 path:/test  requestStr:nonce=8689&none=0&key=CD8FC1C3E75EA36499BEFBB2E93C7142  webSign:0f15cde14b0052bd7f103b08e9ce5b20  sign:0f15cde14b0052bd7f103b08e9ce5b20
+[HTTP Server] http: panic serving 192.168.50.210:59364: runtime error: invalid memory address or nil pointer dereference
+goroutine 12 [running]:
+net/http.(*conn).serve.func1(0xc00006dae0)
+	C:/Go/src/net/http/server.go:1772 +0x140
+panic(0xc34f40, 0x1433230)
+	C:/Go/src/runtime/panic.go:975 +0x3f1
+github.com/kataras/golog.(*Logger).Log(0x0, 0x2, 0xc0004a0de8, 0x1, 0x1)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/golog@v0.0.15/logger.go:245 +0x55
+github.com/kataras/golog.(*Logger).Error(...)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/golog@v0.0.15/logger.go:273
+ops/controller.(*BaseController).exceptionRecover(0xc000571e00, 0xe96500, 0xc0006aa7e0, 0xc34f40, 0x1433230)
+	D:/Go/workspace_test/ops/controller/base_controller.go:95 +0x448
+ops/controller.(*BaseController).handleException(0xc000571e00, 0xe96500, 0xc0006aa7e0)
+	D:/Go/workspace_test/ops/controller/base_controller.go:113 +0x7a
+panic(0xc34f40, 0x1433230)
+	C:/Go/src/runtime/panic.go:969 +0x174
+github.com/go-xorm/xorm.(*EngineGroup).NewSession(0x0, 0x54)
+	C:/Users/rayln/go/pkg/mod/github.com/go-xorm/xorm@v0.7.9/engine_group.go:87 +0x2d
+ops/controller.(*BaseController).Begin(0xc000571e00)
+	D:/Go/workspace_test/ops/controller/base_controller.go:22 +0xaf
+ops/controller.(*BaseController).Start(0xc000571e00, 0xe96500, 0xc0006aa7e0, 0xc0004a1168, 0x0, 0x0)
+	D:/Go/workspace_test/ops/controller/base_controller.go:54 +0x7d
+ops/controller.(*TestController).PostTest(0xc000571e00, 0x0, 0x0)
+	D:/Go/workspace_test/ops/controller/test_controller.go:31 +0xab
+reflect.Value.call(0xca7fe0, 0xc000571e00, 0x1213, 0xd16138, 0x4, 0x1479940, 0x0, 0x0, 0x6, 0xc0004a1440, ...)
+	C:/Go/src/reflect/value.go:460 +0x8b2
+reflect.Value.Call(0xca7fe0, 0xc000571e00, 0x1213, 0x1479940, 0x0, 0x0, 0x1213, 0x3, 0x3)
+	C:/Go/src/reflect/value.go:321 +0xbb
+github.com/kataras/iris/v12/mvc.(*ControllerActivator).handlerOf.func2(0xe96500, 0xc0006aa7e0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/mvc/controller.go:497 +0x3c9
+github.com/kataras/iris/v12/context.(*context).Proceed(0xc0006aa7e0, 0xc00018f100, 0xbea680)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1295 +0x4f
+github.com/kataras/iris/v12/core/router.ExecutionOptions.buildHandler.func1(0xe96500, 0xc0006aa7e0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/handler_execution_rules.go:78 +0x44
+github.com/kataras/iris/v12/context.DefaultNext(0xe96500, 0xc0006aa7e0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1343 +0x10e
+github.com/kataras/iris/v12/context.(*context).Next(0xc0006aa7e0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1352 +0x45
+ops/controller.(*BaseController).BeforeActivation.func1(0xe96500, 0xc0006aa7e0)
+	D:/Go/workspace_test/ops/controller/base_controller.go:63 +0x3b
+github.com/kataras/iris/v12/context.DefaultNext(0xe96500, 0xc0006aa7e0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1343 +0x10e
+github.com/kataras/iris/v12/context.(*context).Next(0xc0006aa7e0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1352 +0x45
+main.handle.func1(0xe96500, 0xc0006aa7e0)
+	D:/Go/workspace_test/ops/main.go:105 +0x9f
+github.com/kataras/iris/v12/context.DefaultNext(0xe96500, 0xc0006aa7e0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1343 +0x10e
+github.com/kataras/iris/v12/context.(*context).Next(0xc0006aa7e0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1352 +0x45
+github.com/kataras/iris/v12/middleware/logger.(*requestLoggerMiddleware).ServeHTTP(0xc00010e000, 0xe96500, 0xc0006aa7e0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/middleware/logger/logger.go:50 +0x96
+github.com/kataras/iris/v12/context.Do(0xe96500, 0xc0006aa7e0, 0xc0002db050, 0x6, 0x6)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1030 +0x88
+github.com/kataras/iris/v12/context.(*context).Do(0xc0006aa7e0, 0xc0002db050, 0x6, 0x6)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/context/context.go:1217 +0x5c
+github.com/kataras/iris/v12/core/router.(*routerHandler).HandleRequest(0xc0002e2dc0, 0xe96500, 0xc0006aa7e0)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/handler.go:250 +0x55d
+github.com/kataras/iris/v12/core/router.(*Router).BuildRouter.func1(0xe7cea0, 0xc000086000, 0xc00000e200)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/router.go:135 +0x96
+github.com/kataras/iris/v12/core/router.(*Router).ServeHTTP(0xc000601630, 0xe7cea0, 0xc000086000, 0xc00000e200)
+	C:/Users/rayln/go/pkg/mod/github.com/kataras/iris/v12@v12.1.8/core/router/router.go:227 +0x4f
+net/http.serverHandler.ServeHTTP(0xc0005b41c0, 0xe7cea0, 0xc000086000, 0xc00000e200)
+	C:/Go/src/net/http/server.go:2807 +0xaa
+net/http.(*conn).serve(0xc00006dae0, 0xe7f1e0, 0xc0002df400)
+	C:/Go/src/net/http/server.go:1895 +0x873
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2933 +0x363
+[DBUG] 2020/07/13 20:49 MVC Controller [controller.TestController] [Scope=Stateless]
+[DBUG] 2020/07/13 20:49 Dependencies:
+	[1] Static binding: &xorm.EngineGroup{Engine:(*xorm.Engine)(0xc000090000), slaves:[]*xorm.Engine{(*xorm.Engine)(0xc0000900e0)}, policy:(xorm.GroupPolicyHandler)(0x78c950)} for field 'Engine *xorm.EngineGroup'
+	[2] Static binding: &golog.Logger{Prefix:"", Level:0x5, TimeFormat:"2006/01/02 15:04", NewLine:true, mu:sync.Mutex{state:0, sema:0x0}, Printer:(*pio.Printer)(0xc0001ee000), handlers:[]golog.Handler(nil), once:sync.Once{done:0x0, m:sync.Mutex{state:0, sema:0x0}}, logs:sync.Pool{noCopy:sync.noCopy{}, local:(unsafe.Pointer)(0xc000546000), localSize:0x8, victim:(unsafe.Pointer)(nil), victimSize:0x0, New:(func() interface {})(nil)}, children:(*golog.loggerMap)(0xc00010b360)} for field 'Logger *golog.Logger'
+	[3] Static binding: &util.Redis{Pool:(*redis.Pool)(0xc000680000)} for field 'Redis *util.Redis'
+
+[DBUG] 2020/07/13 20:49 [./main.go:51] GET: / -> main.newApp.func1()
+[DBUG] 2020/07/13 20:49 [./config\app_controller.go:12] POST: /test -> controller.TestController.PostTest() and 5 more
+[DBUG] 2020/07/13 20:49 Application: 1 registered view engine(s)
+[DBUG] 2020/07/13 20:49 Application: running using 1 host(s)
+[DBUG] 2020/07/13 20:49 Host: addr is :8009
+[DBUG] 2020/07/13 20:49 Host: virtual host is localhost:8009
+[DBUG] 2020/07/13 20:49 Host: register startup notifier
+[DBUG] 2020/07/13 20:49 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+[DBUG] 2020/07/13 20:49 Host: server will ignore the following errors: [http: Server closed]
+Now listening on: http://localhost:8009
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/07/13 20:49 path:/test  requestStr:nonce=8689&none=0&key=CD8FC1C3E75EA36499BEFBB2E93C7142  webSign:0f15cde14b0052bd7f103b08e9ce5b20  sign:0f15cde14b0052bd7f103b08e9ce5b20
+[INFO] 2020/07/13 20:49 farmTestInfo: &{0     0}
+[HTTP] 2020/07/13 20:49  耗时: 1.2998583s  状态: 200  IP地址: 192.168.50.210  请求: POST  路径: /test

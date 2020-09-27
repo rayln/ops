@@ -1,0 +1,17 @@
+[DBUG] 2020/07/17 10:14 MVC Controller [controller.TestController] [Scope=Stateless]
+[DBUG] 2020/07/17 10:14 Dependencies:
+	[1] Static binding: &xorm.EngineGroup{Engine:(*xorm.Engine)(0xc000266000), slaves:[]*xorm.Engine{(*xorm.Engine)(0xc0002660e0)}, policy:(xorm.GroupPolicyHandler)(0x78c950)} for field 'Engine *xorm.EngineGroup'
+	[2] Static binding: &golog.Logger{Prefix:"", Level:0x5, TimeFormat:"2006/01/02 15:04", NewLine:true, mu:sync.Mutex{state:0, sema:0x0}, Printer:(*pio.Printer)(0xc0001b6000), handlers:[]golog.Handler(nil), once:sync.Once{done:0x0, m:sync.Mutex{state:0, sema:0x0}}, logs:sync.Pool{noCopy:sync.noCopy{}, local:(unsafe.Pointer)(0xc000098000), localSize:0x8, victim:(unsafe.Pointer)(nil), victimSize:0x0, New:(func() interface {})(nil)}, children:(*golog.loggerMap)(0xc0000053c0)} for field 'Logger *golog.Logger'
+	[3] Static binding: &util.Redis{Pool:(*redis.Pool)(0xc0002ca000)} for field 'Redis *util.Redis'
+
+[DBUG] 2020/07/17 10:14 [./main.go:51] GET: / -> main.newApp.func1()
+[DBUG] 2020/07/17 10:14 [./config\app_controller.go:12] POST: /test -> controller.TestController.PostTest() and 5 more
+[DBUG] 2020/07/17 10:14 Application: 1 registered view engine(s)
+[DBUG] 2020/07/17 10:14 Application: running using 1 host(s)
+[DBUG] 2020/07/17 10:14 Host: addr is :8009
+[DBUG] 2020/07/17 10:14 Host: virtual host is localhost:8009
+[DBUG] 2020/07/17 10:14 Host: register startup notifier
+[DBUG] 2020/07/17 10:14 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+[DBUG] 2020/07/17 10:14 Host: server will ignore the following errors: [http: Server closed]
+Now listening on: http://localhost:8009
+Application started. Press CTRL+C to shut down.

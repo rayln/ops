@@ -1,0 +1,21 @@
+[DBUG] 2020/06/22 18:45 MVC dependencies of 'controller.TestController':
+[1] Static binding: '*xorm.EngineGroup' for field 'Engine *xorm.EngineGroup'
+[2] Static binding: '*golog.Logger' for field 'Logger *golog.Logger'
+[3] Static binding: '*util.Redis' for field 'Redis *util.Redis'
+
+[DBUG] 2020/06/22 18:45 MVC dependencies of method 'controller.TestController.PostTest':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2020/06/22 18:45 HEAD: /static/*file -> github.com/kataras/iris/core/router.StripPrefix.func1()
+[DBUG] 2020/06/22 18:45 GET: /static/*file -> github.com/kataras/iris/core/router.StripPrefix.func1()
+[DBUG] 2020/06/22 18:45 GET: / -> main.newApp.func1()
+[DBUG] 2020/06/22 18:45 POST: /test -> controller.TestController.PostTest() and 5 more
+[DBUG] 2020/06/22 18:45 Application: 1 registered view engine(s)
+[DBUG] 2020/06/22 18:45 Application: running using 1 host(s)
+[DBUG] 2020/06/22 18:45 Host: addr is :8009
+[DBUG] 2020/06/22 18:45 Host: virtual host is localhost:8009
+[DBUG] 2020/06/22 18:45 Host: register startup notifier
+[DBUG] 2020/06/22 18:45 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+[DBUG] 2020/06/22 18:45 Host: server will ignore the following errors: [http: Server closed]
+Now listening on: http://localhost:8009
+Application started. Press CTRL+C to shut down.
