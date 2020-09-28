@@ -31,11 +31,11 @@ func (that *Log) createfile(app *iris.Application) {
 func (that *Log) createHandler(app *iris.Application) {
 	var h iris.Handler
 	c := logger.Config{
-		Status:  true,
-		IP:      true,
-		Method:  true,
-		Path:    true,
-		Columns: true,
+		Status: true,
+		IP:     true,
+		Method: true,
+		Path:   true,
+		//Columns: true,
 	}
 	c.LogFunc = func(now time.Time, latency time.Duration, status, ip, method, path string, message interface{}, headerMessage interface{}) {
 		that.logFile.Write([]byte(fmt.Sprintln(now.Format("[HTTP] 2006/01/02 15:04"), " 耗时:", latency, " 状态:", status, " IP地址:", ip, " 请求:", method, " 路径:", path)))
