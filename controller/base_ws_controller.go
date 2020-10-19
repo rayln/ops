@@ -55,8 +55,8 @@ func (that *BaseWsController) Close() {
 	that.Commit()
 	return result
 }*/
-func (that *BaseWsController) Start(serviceFunc func() string) string {
-	result := "{\"code\":1,\"message\":\"系统错误！\",\"data\":\"\"}"
+func (that *BaseWsController) Start(serviceFunc func() string) (result string) {
+	result = "{\"code\":1,\"message\":\"系统错误！\",\"data\":\"\"}"
 	that.Begin()
 	defer that.handleException(&result)
 	defer that.Close()
