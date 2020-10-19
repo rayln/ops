@@ -28,6 +28,7 @@ func (that *AppConfig) Init() *AppConfig {
 		initconfig := AppConfig{
 			AppName:      "ops",
 			Port:         ":8009",
+			WsPort:       "7777",
 			RelativePath: "/",
 			StaticPath:   "/static",
 			Mode:         "dev",
