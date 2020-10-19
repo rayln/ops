@@ -1,6 +1,9 @@
 package util
 
-import "github.com/kataras/iris/v12/mvc"
+import (
+	"encoding/json"
+	"github.com/kataras/iris/v12/mvc"
+)
 
 type Result struct {
 	Code    int         `json:"code"`
@@ -16,4 +19,15 @@ func (that *Result) Response() mvc.Result {
 		//Object: StructToMap(*that),
 		Object: that,
 	}
+}
+
+func (that *Result) ResponseWs() string {
+	if that.Code != 0 {
+		that.Message = "网络出现异常，请重新再试！"
+	}
+	temp, err := json.Marshal(that)
+	if err != nil {
+		panic(err)
+	}
+	return string(temp)
 }
