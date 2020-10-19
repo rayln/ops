@@ -82,7 +82,7 @@ func (that *BaseWsController) AfterActivation(a mvc.AfterActivation) {
 /**
 * @Description: 错误信息处理
  */
-func (that *BaseWsController) exceptionRecover(err interface{}) string {
+func (that *BaseWsController) exceptionRecover(err interface{}) *string {
 	var stacktrace string
 	fmt.Println("=11===")
 	for i := 1; ; i++ {
@@ -102,7 +102,8 @@ func (that *BaseWsController) exceptionRecover(err interface{}) string {
 	fmt.Println("=2===")
 	// 打印错误日志
 	// 返回错误信息
-	return "{data: \"\", code: 1, message: \"服务器出现异常，请稍后再试！\"}"
+	temp := "{data: \"\", code: 1, message: \"服务器出现异常，请稍后再试！\"}"
+	return &temp
 }
 
 /**
@@ -119,8 +120,10 @@ func (that *BaseWsController) handleException(result *string) {
 		}
 		fmt.Println("=4===")
 		//异常处理
-		*result = that.exceptionRecover(err)
+		result = that.exceptionRecover(err)
+	} else {
+		temp := "{data: \"handleException\", code: 0, message: \"\"}"
+		result = &temp
 	}
-	*result = "{data: \"handleException\", code: 0, message: \"\"}"
 	fmt.Println("===result====", result)
 }
