@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/kataras/iris/v12/context"
 	"github.com/kataras/iris/v12/mvc"
@@ -58,18 +57,9 @@ func (that *BaseWsController) Close() {
 	return result
 }*/
 func (that *BaseWsController) Start(serviceFunc func() string) string {
-	result := ""
+	result := "{\"code\":1,\"message\":\"系统错误！\",\"data\":\"\"}"
 	that.Begin()
-	defer func() {
-		temp := that.handleException()
-		if temp.Code != 0 {
-			tempStr, err := json.Marshal(temp)
-			if err != nil {
-				panic(err)
-			}
-			result = string(tempStr)
-		}
-	}()
+	defer that.handleException()
 	defer that.Close()
 	result = serviceFunc()
 	that.Commit()
