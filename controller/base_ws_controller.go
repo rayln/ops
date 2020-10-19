@@ -85,6 +85,7 @@ func (that *BaseWsController) AfterActivation(a mvc.AfterActivation) {
  */
 func (that *BaseWsController) exceptionRecover(err interface{}) util.Result {
 	var stacktrace string
+	fmt.Println("=11===")
 	for i := 1; ; i++ {
 		_, f, l, got := runtime.Caller(i)
 		if !got {
@@ -99,6 +100,7 @@ func (that *BaseWsController) exceptionRecover(err interface{}) util.Result {
 	logMessage += errMsg + "\n"
 	logMessage += fmt.Sprintf("\n%s", stacktrace)
 	that.Logger.Error(logMessage)
+	fmt.Println("=2===")
 	// 打印错误日志
 	// 返回错误信息
 	return util.Result{Data: "", Code: util.ERROR_CODE, Message: "服务器出现异常，请稍后再试！"}
@@ -108,11 +110,15 @@ func (that *BaseWsController) exceptionRecover(err interface{}) util.Result {
 处理异常信息
 */
 func (that *BaseWsController) handleException() util.Result {
+	fmt.Println("=0===")
 	if err := recover(); err != nil {
+		fmt.Println("=1===")
 		if that.Save != nil {
+			fmt.Println("=2===")
 			//事务回滚
 			that.Save.Rollback()
 		}
+		fmt.Println("=4===")
 		//异常处理
 		return that.exceptionRecover(err)
 	}
