@@ -9,6 +9,7 @@ import (
 type AppConfig struct {
 	AppName      string
 	Port         string
+	WsPort       string
 	RelativePath string
 	StaticPath   string
 	Mode         string
