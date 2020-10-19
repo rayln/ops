@@ -125,5 +125,5 @@ func (that *BaseWsController) handleException(result *string) {
 		temp := "{data: \"handleException\", code: 0, message: \"\"}"
 		result = &temp
 	}
-	fmt.Println("===result====", result)
+	fmt.Println("===result====", *result)
 }
