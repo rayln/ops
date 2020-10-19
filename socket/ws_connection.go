@@ -111,3 +111,6 @@ ERR:
 func (conn *WsConnection) SetChannelId(channelId int) {
 	conn.channelId = channelId
 }
+func (conn *WsConnection) GetChannelId() int {
+	return conn.channelId
+}
