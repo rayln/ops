@@ -107,3 +107,7 @@ ERR:
 	conn.Close()
 
 }
+
+func (conn *WsConnection) SetChannelId(channelId int) {
+	conn.channelId = channelId
+}
