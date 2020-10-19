@@ -11,9 +11,9 @@ type WsConnection struct {
 	inChan    chan []byte
 	outChan   chan []byte
 	closeChan chan byte
-
-	mutex    sync.Mutex // 对closeChan关闭上锁
-	isClosed bool       // 防止closeChan被关闭多次
+	channelId int        //唯一标识
+	mutex     sync.Mutex // 对closeChan关闭上锁
+	isClosed  bool       // 防止closeChan被关闭多次
 }
 
 func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
