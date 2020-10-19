@@ -5,7 +5,6 @@ import (
 	"github.com/kataras/iris/v12/context"
 	"github.com/kataras/iris/v12/mvc"
 	"github.com/rayln/ops/entity"
-	"github.com/rayln/ops/util"
 	"runtime"
 )
 
@@ -59,7 +58,7 @@ func (that *BaseWsController) Close() {
 func (that *BaseWsController) Start(serviceFunc func() string) string {
 	result := "{\"code\":1,\"message\":\"系统错误！\",\"data\":\"\"}"
 	that.Begin()
-	defer that.handleException()
+	defer that.handleException(&result)
 	defer that.Close()
 	result = serviceFunc()
 	that.Commit()
@@ -83,7 +82,7 @@ func (that *BaseWsController) AfterActivation(a mvc.AfterActivation) {
 /**
 * @Description: 错误信息处理
  */
-func (that *BaseWsController) exceptionRecover(err interface{}) util.Result {
+func (that *BaseWsController) exceptionRecover(err interface{}) string {
 	var stacktrace string
 	fmt.Println("=11===")
 	for i := 1; ; i++ {
@@ -103,13 +102,13 @@ func (that *BaseWsController) exceptionRecover(err interface{}) util.Result {
 	fmt.Println("=2===")
 	// 打印错误日志
 	// 返回错误信息
-	return util.Result{Data: "", Code: util.ERROR_CODE, Message: "服务器出现异常，请稍后再试！"}
+	return "{data: \"\", code: 1, message: \"服务器出现异常，请稍后再试！\"}"
 }
 
 /**
 处理异常信息
 */
-func (that *BaseWsController) handleException() util.Result {
+func (that *BaseWsController) handleException(result *string) {
 	fmt.Println("=0===")
 	if err := recover(); err != nil {
 		fmt.Println("=1===")
@@ -120,7 +119,8 @@ func (that *BaseWsController) handleException() util.Result {
 		}
 		fmt.Println("=4===")
 		//异常处理
-		return that.exceptionRecover(err)
+		*result = that.exceptionRecover(err)
 	}
-	return util.Result{}
+	*result = "{data: \"handleException\", code: 0, message: \"\"}"
+	fmt.Println("===result====", result)
 }
