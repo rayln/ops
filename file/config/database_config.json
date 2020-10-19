@@ -1,1 +1,1 @@
-{"MaxIdleConns":200,"MaxOpenConns":1000,"ShowSQL":true,"LogLevel":1,"Master": "mycat:password@tcp(ip:8066)/name?charset=utf8","Select": "select:password@tcp(ip:3306)/name?charset=utf8","Redis": "ip","RedisPwd": "password"}
+{"MaxIdleConns":200,"MaxOpenConns":1000,"ShowSQL":true,"LogLevel":1,"Master": "mycat:password@tcp(ip:8066)/name?charset=utf8","Select": "select:password@tcp(ip:3306)/name?charset=utf8","Redis": "ip","RedisPwd": "password","MaxIdle":100,"MaxActive":1000,"Dbindex":4}

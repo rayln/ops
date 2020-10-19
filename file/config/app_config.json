@@ -1,1 +1,1 @@
-{"AppName":"farm","RelativePath":"/server95","Port":":8010","StaticPath":"/static","Mode":"dev","IsSign": false}
+{"AppName":"farm","RelativePath":"/server95","Port":":8010","WsPort":"7777","StaticPath":"/static","Mode":"dev","IsSign": false}

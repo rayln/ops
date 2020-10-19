@@ -15,6 +15,9 @@ type DatabaseConfig struct {
 	Select       string
 	Redis        string
 	RedisPwd     string
+	Dbindex      int
+	MaxIdle      int
+	MaxActive    int
 }
 
 func (that *DatabaseConfig) Init() *DatabaseConfig {

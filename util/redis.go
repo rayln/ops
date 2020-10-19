@@ -14,13 +14,13 @@ type Redis struct {
 /**
 初始化redis
 */
-func (that *Redis) Init(ip string, pwd string) *Redis {
+func (that *Redis) Init(ip string, pwd string, dbIndex int, maxIdle int, maxActive int) *Redis {
 	var redisPool = &redis.Pool{
-		MaxIdle:     100,
-		MaxActive:   1000,
+		MaxIdle:     maxIdle,
+		MaxActive:   maxActive,
 		IdleTimeout: 30 * time.Second,
 		Dial: func() (conn redis.Conn, err error) {
-			return redis.Dial("tcp", fmt.Sprintf("%s:6379", ip), redis.DialPassword(fmt.Sprintf("%s", pwd)), redis.DialDatabase(0))
+			return redis.Dial("tcp", fmt.Sprintf("%s:6379", ip), redis.DialPassword(fmt.Sprintf("%s", pwd)), redis.DialDatabase(dbIndex))
 		},
 	}
 	that.Pool = redisPool
