@@ -98,7 +98,7 @@ func (conn *WsConnection) writeLoop() {
 		case <-conn.closeChan:
 			goto ERR
 		}
-		if err = conn.wsConnect.WriteMessage(websocket.TextMessage, data); err != nil {
+		if err = conn.wsConnect.WriteMessage(websocket.BinaryMessage, data); err != nil {
 			goto ERR
 		}
 	}
