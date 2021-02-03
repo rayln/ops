@@ -27,6 +27,19 @@ func (that *Redis) Init(ip string, pwd string, dbIndex int, maxIdle int, maxActi
 	return that
 }
 
+func (that *Redis) InitWithPort(ip string, port string, pwd string, dbIndex int, maxIdle int, maxActive int) *Redis {
+	var redisPool = &redis.Pool{
+		MaxIdle:     maxIdle,
+		MaxActive:   maxActive,
+		IdleTimeout: 30 * time.Second,
+		Dial: func() (conn redis.Conn, err error) {
+			return redis.Dial("tcp", fmt.Sprintf("%s:%s", ip, port), redis.DialPassword(fmt.Sprintf("%s", pwd)), redis.DialDatabase(dbIndex))
+		},
+	}
+	that.Pool = redisPool
+	return that
+}
+
 /**
 使用Redis
 */
