@@ -15,6 +15,7 @@ type DatabaseConfig struct {
 	Select       string
 	Redis        string
 	RedisPwd     string
+	RedisPort    string
 	Dbindex      int
 	MaxIdle      int
 	MaxActive    int
