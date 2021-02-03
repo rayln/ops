@@ -10,8 +10,8 @@ type DatabaseConfig struct {
 	MaxIdleConns int
 	MaxOpenConns int
 	ShowSQL      bool
-	LogLevel     int //1 debug 2 info
-	Master       string
+	LogLevel     int    //1 debug 2 info
+	Master       string //index
 	Select       string
 	Redis        string
 	RedisPwd     string
