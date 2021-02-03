@@ -89,7 +89,8 @@ func initserver(app *iris.Application) {
 */
 func handle(app *iris.Application, appConfig *config.AppConfig, databaseConfig *config.DatabaseConfig) {
 	engine := InitDatabase(databaseConfig)
-	redis := new(util.Redis).Init(databaseConfig.Redis, databaseConfig.RedisPwd, databaseConfig.Dbindex, databaseConfig.MaxIdle, databaseConfig.MaxActive)
+	//redis := new(util.Redis).Init(databaseConfig.Redis, databaseConfig.RedisPwd, databaseConfig.Dbindex, databaseConfig.MaxIdle, databaseConfig.MaxActive)
+	redis := new(util.Redis).InitWithPort(databaseConfig.Redis, databaseConfig.RedisPort, databaseConfig.RedisPwd, databaseConfig.Dbindex, databaseConfig.MaxIdle, databaseConfig.MaxActive)
 	application := mvc.New(app.Party("/"))
 	//重要
 	//所有选项都可以用Force填充：true，所有的都会很好的兼容
