@@ -50,6 +50,17 @@ func (conn *WsConnection) WriteMessage(data []byte) (err error) {
 	return
 }
 
+func (conn *WsConnection) WriteMessageType(message_type int, data []byte) (err error) {
+
+	//select {
+	//case conn.outChan <- data:
+	//case <-conn.closeChan:
+	//	err = errors.New("connection is closed")
+	//}
+	conn.wsConnect.WriteMessage(message_type, data)
+	return
+}
+
 func (conn *WsConnection) Close() {
 	// 线程安全，可多次调用
 	conn.wsConnect.Close()
