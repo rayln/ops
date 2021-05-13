@@ -50,6 +50,7 @@ func (conn *WsConnection) WriteMessage(data []byte) (err error) {
 	return
 }
 
+//update
 func (conn *WsConnection) WriteMessageType(message_type int, data []byte) (err error) {
 
 	//select {
