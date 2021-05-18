@@ -95,7 +95,7 @@ func (conn *WsConnection) ReadLoop() {
 		if _, data, err = conn.wsConnect.ReadMessage(); err != nil {
 			goto ERR
 		}
-		//阻塞在这里，等待inChan有空闲位置。
+		//阻塞在这里，等待inChan有空闲位置。。。。
 		select {
 		case conn.inChan <- data:
 		case <-conn.closeChan: // closeChan 感知 conn断开
