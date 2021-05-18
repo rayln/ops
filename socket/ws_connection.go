@@ -24,9 +24,9 @@ func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 		closeChan: make(chan byte, 1),
 	}
 	// 启动读协程
-	go conn.readLoop()
+	go conn.ReadLoop()
 	// 启动写协程
-	go conn.writeLoop()
+	go conn.WriteLoop()
 	return
 }
 
@@ -86,7 +86,7 @@ func (conn *WsConnection) Close() {
 }
 
 // 内部实现
-func (conn *WsConnection) readLoop() {
+func (conn *WsConnection) ReadLoop() {
 	var (
 		data []byte
 		err  error
@@ -108,7 +108,7 @@ ERR:
 	conn.Close()
 }
 
-func (conn *WsConnection) writeLoop() {
+func (conn *WsConnection) WriteLoop() {
 	var (
 		data []byte
 		err  error
