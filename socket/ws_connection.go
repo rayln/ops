@@ -30,6 +30,16 @@ func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 	return
 }
 
+func InitConnectionOnly(wsConn *websocket.Conn) (conn *WsConnection, err error) {
+	conn = &WsConnection{
+		wsConnect: wsConn,
+		inChan:    make(chan []byte, 1000),
+		outChan:   make(chan []byte, 1000),
+		closeChan: make(chan byte, 1),
+	}
+	return
+}
+
 func (conn *WsConnection) ReadMessage() (data []byte, err error) {
 
 	select {
