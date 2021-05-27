@@ -44,13 +44,13 @@ func (that *BaseDao) UpdateTable(tablename string, where string, data interface{
 	base.Save.Exec(fmt.Sprintf("update %s set %s where %s and %s", tablename, dataSet, where, versionWhere))
 }
 func (that *BaseDao) Update(id interface{}, userInfo interface{}, base *model.BaseEntity) {
-	count, err := base.Save.ID(id).AllCols().Update(userInfo)
+	_, err := base.Save.ID(id).AllCols().Update(userInfo)
 	if err != nil {
 		panic(err)
 	}
-	if count == 0 {
-		panic("Update count is 0!")
-	}
+	//if count == 0 {
+	//	panic("Update count is 0!")
+	//}
 }
 func (that *BaseDao) Delete(id interface{}, userInfo interface{}, base *model.BaseEntity) {
 	count, err := base.Save.ID(id).Delete(userInfo)
