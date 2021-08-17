@@ -40,6 +40,10 @@ func InitConnectionOnly(wsConn *websocket.Conn) (conn *WsConnection, err error) 
 	return
 }
 
+func (conn *WsConnection) IsClose() bool {
+	return conn.isClosed
+}
+
 func (conn *WsConnection) ReadMessage() (data []byte, err error) {
 
 	select {
