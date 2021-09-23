@@ -17,3 +17,19 @@ func (that *Schedule) Run(callfunc func(), duration time.Duration) {
 		}
 	}()
 }
+
+/**
+返回true则跳出循环
+*/
+func (that *Schedule) RunToBreak(callfunc func() bool, duration time.Duration) {
+	go func() {
+	Loop:
+		for {
+			tiker := time.NewTicker(duration)
+			if callfunc() {
+				break Loop
+			}
+			<-tiker.C
+		}
+	}()
+}
