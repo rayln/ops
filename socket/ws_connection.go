@@ -4,7 +4,6 @@ import (
 	"errors"
 	"github.com/gorilla/websocket"
 	"sync"
-	"time"
 )
 
 type WsConnection struct {
@@ -15,7 +14,7 @@ type WsConnection struct {
 	channelId              int        //唯一标识
 	mutex                  sync.Mutex // 对closeChan关闭上锁
 	isClosed               bool       // 防止closeChan被关闭多次
-	Last_send_massage_time time.Time  //上次发送消息时间
+	Token 				   int  //token 唯一凭证
 }
 
 func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
@@ -24,7 +23,6 @@ func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 		inChan:                 make(chan []byte, 1000),
 		outChan:                make(chan []byte, 1000),
 		closeChan:              make(chan byte, 1),
-		Last_send_massage_time: time.Now(),
 	}
 	// 启动读协程
 	go conn.ReadLoop()
@@ -39,7 +37,6 @@ func InitConnectionOnly(wsConn *websocket.Conn) (conn *WsConnection, err error) 
 		inChan:                 make(chan []byte, 1000),
 		outChan:                make(chan []byte, 1000),
 		closeChan:              make(chan byte, 1),
-		Last_send_massage_time: time.Now(),
 	}
 	return
 }
