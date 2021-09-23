@@ -14,7 +14,8 @@ type WsConnection struct {
 	channelId              int        //唯一标识
 	mutex                  sync.Mutex // 对closeChan关闭上锁
 	isClosed               bool       // 防止closeChan被关闭多次
-	Token 				   int  //token 唯一凭证
+	Token 				   int  	  //token 唯一凭证
+	LastTime			   int64	  //最后更新时间
 }
 
 func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
