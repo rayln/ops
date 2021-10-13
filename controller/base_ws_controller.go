@@ -58,12 +58,12 @@ func (that *BaseWsController) Close(entitys *entity.BaseEntity) {
 	that.Commit()
 	return result
 }*/
-func (that *BaseWsController) Start(serviceFunc func() string) (result string) {
+func (that *BaseWsController) Start(serviceFunc func(*entity.BaseEntity) string) (result string) {
 	result = "{\"code\":1,\"message\":\"system error!\",\"data\":\"\"}"
 	var enti = that.Begin()
 	defer that.handleException(&result, enti)
 	defer that.Close(enti)
-	result = serviceFunc()
+	result = serviceFunc(enti)
 	that.Commit(enti)
 	return result
 }
