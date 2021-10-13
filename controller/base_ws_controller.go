@@ -63,8 +63,8 @@ func (that *BaseWsController) Start(serviceFunc func(*entity.BaseEntity) string)
 	//TODO update
 	result = "{\"code\":1,\"message\":\"system error!\",\"data\":\"\"}"
 	var enti = that.Begin()
-	defer that.handleException(&result, enti)
 	defer that.Close(enti)
+	defer that.handleException(&result, enti)
 	//传入entity到用户中。然后再做新的
 	result = serviceFunc(enti)
 	that.Commit(enti)
