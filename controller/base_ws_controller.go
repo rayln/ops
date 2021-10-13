@@ -59,6 +59,7 @@ func (that *BaseWsController) Close(entitys *entity.BaseEntity) {
 	return result
 }*/
 func (that *BaseWsController) Start(serviceFunc func(*entity.BaseEntity) string) (result string) {
+	//TODO update
 	result = "{\"code\":1,\"message\":\"system error!\",\"data\":\"\"}"
 	var enti = that.Begin()
 	defer that.handleException(&result, enti)
