@@ -60,8 +60,8 @@ func (that *BaseController) Close() {
 }*/
 func (that *BaseController) Start(request iris.Context, serviceFunc func() mvc.Result) mvc.Result {
 	that.Begin()
-	defer that.handleException(request)
 	defer that.Close()
+	defer that.handleException(request)
 	result := serviceFunc()
 	that.Commit()
 	return result
