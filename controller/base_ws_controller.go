@@ -23,6 +23,7 @@ func (that *BaseWsController) Begin() *entity.BaseEntity {
 		entitys.Save = that.Engine.NewSession()
 		//开启事务
 		entitys.Save.Begin()
+		entitys.Logger, entitys.App, entitys.Engine, entitys.Redis = that.Logger, that.App, that.Engine, that.Redis
 	}
 	if entitys.Load == nil {
 		entitys.Load = that.Engine.Slave()
