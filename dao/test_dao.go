@@ -29,7 +29,7 @@ func (that *TestDao) Save(baseEntity *entity.BaseEntity) {
 func (that *TestDao) Query(baseEntity *entity.BaseEntity) *entity.FarmTestInfo {
 	var farmTestInfo = new(entity.FarmTestInfo)
 	//使用baseEntity.Load对象来做查询（读写分离）
-	_, err := baseEntity.Load.Id(268781).Get(farmTestInfo)
+	_, err := baseEntity.Load.ID(268781).Get(farmTestInfo)
 	if err != nil {
 		panic(err.Error())
 	}

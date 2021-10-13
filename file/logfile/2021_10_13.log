@@ -1,0 +1,17 @@
+[DBUG] 2021/10/13 11:02 MVC Controller [controller.TestController] [Scope=Stateless]
+[DBUG] 2021/10/13 11:02 Dependencies:
+	[1] Static binding: &xorm.EngineGroup{Engine:(*xorm.Engine)(0xc000516e60), slaves:[]*xorm.Engine{(*xorm.Engine)(0xc0005172c0)}, policy:(xorm.GroupPolicyHandler)(0xb9a6f0)} for field 'Engine *xorm.EngineGroup'
+	[2] Static binding: &golog.Logger{Prefix:"", Level:0x5, TimeFormat:"2006/01/02 15:04", StacktraceLimit:0, NewLine:true, mu:sync.RWMutex{w:sync.Mutex{state:0, sema:0x0}, writerSem:0x0, readerSem:0x0, readerCount:0, readerWait:0}, Printer:(*pio.Printer)(0xc0000a4000), LevelOutput:map[golog.Level]io.Writer{}, formatters:map[string]golog.Formatter{"json":(*golog.JSONFormatter)(0xc00009a080)}, formatter:golog.Formatter(nil), LevelFormatter:map[golog.Level]golog.Formatter{}, handlers:[]golog.Handler(nil), once:sync.Once{done:0x0, m:sync.Mutex{state:0, sema:0x0}}, logs:sync.Pool{noCopy:sync.noCopy{}, local:(unsafe.Pointer)(0xc0002c1200), localSize:0xc, victim:(unsafe.Pointer)(nil), victimSize:0x0, New:(func() interface {})(nil)}, children:(*golog.loggerMap)(0xc0000941e0)} for field 'Logger *golog.Logger'
+	[3] Static binding: &util.Redis{Pool:(*redis.Pool)(0xc0005696c0)} for field 'Redis *util.Redis'
+
+[DBUG] 2021/10/13 11:02 [./main.go:54] GET: / -> main.newApp.func1()
+[DBUG] 2021/10/13 11:02 [./config\app_controller.go:12] POST: /test -> controller.TestController.PostTest() and 5 more
+[DBUG] 2021/10/13 11:02 Application: 1 registered view engine(s)
+[DBUG] 2021/10/13 11:02 Application: running using 1 host(s)
+[DBUG] 2021/10/13 11:02 Host: addr is :8010
+[DBUG] 2021/10/13 11:02 Host: virtual host is localhost:8010
+[DBUG] 2021/10/13 11:02 Host: register startup notifier
+[DBUG] 2021/10/13 11:02 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+[DBUG] 2021/10/13 11:02 Host: server will ignore the following errors: [http: Server closed]
+Now listening on: http://localhost:8010
+Application started. Press CTRL+C to shut down.

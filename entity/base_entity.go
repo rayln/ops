@@ -1,10 +1,10 @@
 package entity
 
 import (
-	"github.com/go-xorm/xorm"
 	"github.com/kataras/golog"
 	"github.com/kataras/iris/v12"
 	"github.com/rayln/ops/util"
+	"xorm.io/xorm"
 )
 
 type BaseEntity struct {

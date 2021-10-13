@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/go-xorm/xorm"
+	"xorm.io/xorm"
 )
 
 func InitDatabase(engine *xorm.Engine) {

@@ -3,7 +3,6 @@ package dao
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/go-xorm/xorm"
 	model "github.com/rayln/ops/entity"
 	"reflect"
 	"strings"
@@ -73,9 +72,9 @@ func (that *BaseDao) DeleteWhere(where string, userInfo interface{}, base *model
 /**
 内部事务提交
 */
-func (that *BaseDao) TransitCommit(transitFunc func(*xorm.Session, *model.BaseEntity), base *model.BaseEntity) {
-	temp := base.Save.Clone()
-	temp.Begin()
-	transitFunc(temp, base)
-	temp.Commit()
-}
+//func (that *BaseDao) TransitCommit(transitFunc func(*xorm.Session, *model.BaseEntity), base *model.BaseEntity) {
+//	temp := base.Save.Clone()
+//	temp.Begin()
+//	transitFunc(temp, base)
+//	temp.Commit()
+//}

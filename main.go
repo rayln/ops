@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/go-xorm/xorm"
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/context"
 	"github.com/kataras/iris/v12/mvc"
@@ -11,8 +10,9 @@ import (
 	"github.com/rayln/ops/entity"
 	"github.com/rayln/ops/intercepter"
 	"github.com/rayln/ops/util"
-	"time"
 	"xorm.io/core"
+	"xorm.io/xorm"
+	"xorm.io/xorm/caches"
 )
 
 func main() {
@@ -141,13 +141,14 @@ func InitDatabase(databaseConfig *config.DatabaseConfig) *xorm.EngineGroup {
 	//显示SQL语句
 	engine.ShowSQL(databaseConfig.ShowSQL)
 	//设置日志级别
-	if databaseConfig.LogLevel == 1 {
-		engine.Logger().SetLevel(core.LOG_DEBUG)
-	} else if databaseConfig.LogLevel == 2 {
-		engine.Logger().SetLevel(core.LOG_INFO)
-	} else {
-		engine.Logger().SetLevel(core.LOG_INFO)
-	}
+	//if databaseConfig.LogLevel == 1 {
+	//	//engine.Logger().SetLevel(core.LOG_DEBUG)
+	//	engine.Logger().SetLevel(core.LOG_DEBUG)
+	//} else if databaseConfig.LogLevel == 2 {
+	//	engine.Logger().SetLevel(core.LOG_INFO)
+	//} else {
+	//	engine.Logger().SetLevel(core.LOG_INFO)
+	//}
 	//设置连接池空闲数大小
 	engine.SetMaxIdleConns(databaseConfig.MaxIdleConns)
 	//设置连接池最大连接数
@@ -160,8 +161,10 @@ func InitDatabase(databaseConfig *config.DatabaseConfig) *xorm.EngineGroup {
 	config.InitDatabase(engine.Master())
 	//缓存处理
 	//xrc.NewRedisCacher("localhost:6379", "", xrc.DEFAULT_EXPIRATION, engine.Logger())
-	cache := xorm.NewLRUCacher2(xorm.NewMemoryStore(), time.Duration(3600)*time.Second, 10000)
-	engine.SetDefaultCacher(cache)
+	//cache := xorm.NewLRUCacher2(xorm.NewMemoryStore(), time.Duration(3600)*time.Second, 10000)
+	cacher := caches.NewLRUCacher(caches.NewMemoryStore(), 10000)
+	engine.SetDefaultCacher(cacher)
+	//engine.SetDefaultCacher(cache)
 	/*f,_ := os.Create("sql.log")
 	xorm.Engine.Logger = xorm.NewSimpleLogger(f)*/
 	return engine
