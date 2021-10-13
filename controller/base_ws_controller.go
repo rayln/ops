@@ -9,39 +9,41 @@ import (
 )
 
 type BaseWsController struct {
-	entity.BaseEntity
+	entity.BaseWsEntity
 	Request context.Context
 }
 
 /**
 开启事务
 */
-func (that *BaseWsController) Begin() {
-	if that.Save == nil {
+func (that *BaseWsController) Begin() *entity.BaseEntity {
+	var entitys = new(entity.BaseEntity)
+	if entitys.Save == nil {
 		//创建事务
-		that.Save = that.Engine.NewSession()
+		entitys.Save = that.Engine.NewSession()
 		//开启事务
-		that.Save.Begin()
+		entitys.Save.Begin()
 	}
-	if that.Load == nil {
-		that.Load = that.Engine.Slave()
+	if entitys.Load == nil {
+		entitys.Load = that.Engine.Slave()
 	}
+	return entitys
 }
 
 /**
 提交事务
 */
-func (that *BaseWsController) Commit() {
-	if that.Save != nil {
+func (that *BaseWsController) Commit(entitys *entity.BaseEntity) {
+	if entitys.Save != nil {
 		//提交事务
-		that.Save.Commit()
+		entitys.Save.Commit()
 	}
 }
-func (that *BaseWsController) Close() {
-	if that.Save != nil {
+func (that *BaseWsController) Close(entitys *entity.BaseEntity) {
+	if entitys.Save != nil {
 		//关闭事务
-		that.Save.Close()
-		that.Save = nil
+		entitys.Save.Close()
+		entitys.Save = nil
 	}
 }
 
@@ -58,11 +60,11 @@ func (that *BaseWsController) Close() {
 }*/
 func (that *BaseWsController) Start(serviceFunc func() string) (result string) {
 	result = "{\"code\":1,\"message\":\"system error!\",\"data\":\"\"}"
-	that.Begin()
-	defer that.handleException(&result)
-	defer that.Close()
+	var enti = that.Begin()
+	defer that.handleException(&result, enti)
+	defer that.Close(enti)
 	result = serviceFunc()
-	that.Commit()
+	that.Commit(enti)
 	return result
 }
 
@@ -108,11 +110,11 @@ func (that *BaseWsController) exceptionRecover(err interface{}) *string {
 /**
 处理异常信息
 */
-func (that *BaseWsController) handleException(result *string) {
+func (that *BaseWsController) handleException(result *string, entitys *entity.BaseEntity) {
 	if err := recover(); err != nil {
-		if that.Save != nil {
+		if entitys.Save != nil {
 			//事务回滚
-			that.Save.Rollback()
+			entitys.Save.Rollback()
 		}
 		//异常处理
 		result = that.exceptionRecover(err)
