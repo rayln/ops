@@ -41,6 +41,7 @@ func (that *BaseWsController) Close() {
 	if that.Save != nil {
 		//关闭事务
 		that.Save.Close()
+		that.Save = nil
 	}
 }
 
