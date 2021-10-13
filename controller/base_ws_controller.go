@@ -68,9 +68,6 @@ func (that *BaseWsController) Start(serviceFunc func(*entity.BaseEntity) string)
 	//传入entity到用户中。然后再做新的
 	result = serviceFunc(enti)
 	that.Commit(enti)
-	if false {
-
-	}
 	return result
 }
 
