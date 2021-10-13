@@ -63,6 +63,7 @@ func (that *BaseWsController) Start(serviceFunc func(*entity.BaseEntity) string)
 	var enti = that.Begin()
 	defer that.handleException(&result, enti)
 	defer that.Close(enti)
+	//传入entity到用户中
 	result = serviceFunc(enti)
 	that.Commit(enti)
 	return result
