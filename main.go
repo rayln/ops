@@ -160,11 +160,9 @@ func InitDatabase(databaseConfig *config.DatabaseConfig) *xorm.EngineGroup {
 	//配置表结构
 	config.InitDatabase(engine.Master())
 	//缓存处理
-	//xrc.NewRedisCacher("localhost:6379", "", xrc.DEFAULT_EXPIRATION, engine.Logger())
-	//cache := xorm.NewLRUCacher2(xorm.NewMemoryStore(), time.Duration(3600)*time.Second, 10000)
 	cacher := caches.NewLRUCacher(caches.NewMemoryStore(), 10000)
 	engine.SetDefaultCacher(cacher)
-	//engine.SetDefaultCacher(cache)
+	//engine.SetDefaultCacher(xormrediscache.NewRedisCacher(fmt.Sprintf("%s:%s", databaseConfig.Redis, databaseConfig.RedisPort), databaseConfig.RedisPwd, time.Hour, nil))
 	/*f,_ := os.Create("sql.log")
 	xorm.Engine.Logger = xorm.NewSimpleLogger(f)*/
 	return engine
