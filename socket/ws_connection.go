@@ -7,23 +7,23 @@ import (
 )
 
 type WsConnection struct {
-	wsConnect              *websocket.Conn
-	inChan                 chan []byte
-	outChan                chan []byte
-	closeChan              chan byte
-	channelId              int        //唯一标识
-	mutex                  sync.Mutex // 对closeChan关闭上锁
-	isClosed               bool       // 防止closeChan被关闭多次
-	Token 				   int  	  //token 唯一凭证
-	LastTime			   int64	  //最后更新时间
+	wsConnect *websocket.Conn
+	inChan    chan []byte
+	outChan   chan []byte
+	closeChan chan byte
+	channelId int        //唯一标识
+	mutex     sync.Mutex // 对closeChan关闭上锁
+	isClosed  bool       // 防止closeChan被关闭多次
+	Token     int        //token 唯一凭证
+	LastTime  int64      //最后更新时间
 }
 
 func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 	conn = &WsConnection{
-		wsConnect:              wsConn,
-		inChan:                 make(chan []byte, 1000),
-		outChan:                make(chan []byte, 1000),
-		closeChan:              make(chan byte, 1),
+		wsConnect: wsConn,
+		inChan:    make(chan []byte, 1000),
+		outChan:   make(chan []byte, 1000),
+		closeChan: make(chan byte, 1),
 	}
 	// 启动读协程
 	go conn.ReadLoop()
@@ -34,10 +34,10 @@ func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 
 func InitConnectionOnly(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 	conn = &WsConnection{
-		wsConnect:              wsConn,
-		inChan:                 make(chan []byte, 1000),
-		outChan:                make(chan []byte, 1000),
-		closeChan:              make(chan byte, 1),
+		wsConnect: wsConn,
+		inChan:    make(chan []byte, 1000),
+		outChan:   make(chan []byte, 1000),
+		closeChan: make(chan byte, 1),
 	}
 	return
 }
@@ -74,7 +74,7 @@ func (conn *WsConnection) WriteMessageType(message_type int, data []byte) (err e
 	//case <-conn.closeChan:
 	//	err = errors.New("connection is closed")
 	//}
-	conn.wsConnect.WriteMessage(message_type, data)
+	err = conn.wsConnect.WriteMessage(message_type, data)
 	return
 }
 
