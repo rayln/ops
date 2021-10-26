@@ -132,7 +132,7 @@ func (conn *WsConnection) WriteLoop() {
 		case <-conn.closeChan:
 			goto ERR
 		}*/
-		// 加锁，避免报错
+		// 加锁，避免报错。为啥没提交成功！！
 		lock.Lock()
 		if err = conn.wsConnect.WriteMessage(websocket.BinaryMessage, data); err != nil {
 			lock.Unlock()
