@@ -25,10 +25,14 @@ func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 		outChan:   make(chan []byte, 1000),
 		closeChan: make(chan byte, 1),
 	}
+	var (
+		readLock  sync.Mutex
+		writeLock sync.Mutex
+	)
 	// 启动读协程
-	go conn.ReadLoop()
+	go conn.ReadLoop(&readLock)
 	// 启动写协程
-	go conn.WriteLoop()
+	go conn.WriteLoop(&writeLock)
 	return
 }
 
@@ -92,11 +96,10 @@ func (conn *WsConnection) Close() {
 }
 
 // 内部实现
-func (conn *WsConnection) ReadLoop() {
+func (conn *WsConnection) ReadLoop(lock *sync.Mutex) {
 	var (
 		data []byte
 		err  error
-		lock sync.Mutex
 	)
 	for {
 		// 加锁，避免报错
@@ -119,11 +122,10 @@ ERR:
 	conn.Close()
 }
 
-func (conn *WsConnection) WriteLoop() {
+func (conn *WsConnection) WriteLoop(lock *sync.Mutex) {
 	var (
 		data []byte
 		err  error
-		lock sync.Mutex
 	)
 
 	for {
