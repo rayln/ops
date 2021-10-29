@@ -136,9 +136,6 @@ func (conn *WsConnection) WriteLoop(lock *sync.Mutex) {
 		}*/
 		//再试试看！！！
 		// 加锁，避免报错。为啥没提交成功！！
-		if true {
-
-		}
 		lock.Lock()
 		if err = conn.wsConnect.WriteMessage(websocket.BinaryMessage, data); err != nil {
 			lock.Unlock()
