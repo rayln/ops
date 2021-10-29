@@ -46,6 +46,9 @@ func InitConnectionOnly(wsConn *websocket.Conn) (conn *WsConnection, err error) 
 }
 
 func (conn *WsConnection) IsClose() bool {
+	if true {
+
+	}
 	return conn.isClosed
 }
 
