@@ -25,14 +25,14 @@ func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 		outChan:   make(chan []byte, 1000),
 		closeChan: make(chan byte, 1),
 	}
-	var (
-		readLock  sync.Mutex
-		writeLock sync.Mutex
-	)
-	// 启动读协程
-	go conn.ReadLoop(&readLock)
-	// 启动写协程
-	go conn.WriteLoop(&writeLock)
+	//var (
+	//	readLock  sync.Mutex
+	//	writeLock sync.Mutex
+	//)
+	//// 启动读协程
+	//go conn.ReadLoop(&readLock)
+	//// 启动写协程
+	//go conn.WriteLoop(&writeLock)
 	return
 }
 
@@ -97,29 +97,29 @@ func (conn *WsConnection) Close() {
 
 // 内部实现
 func (conn *WsConnection) ReadLoop(lock *sync.Mutex) {
-	var (
-		data []byte
-		err  error
-	)
-	for {
-		// 加锁，避免报错
-		lock.Lock()
-		if _, data, err = conn.wsConnect.ReadMessage(); err != nil {
+	/*var (
+			data []byte
+			err  error
+		)
+		for {
+			// 加锁，避免报错
+			lock.Lock()
+			if _, data, err = conn.wsConnect.ReadMessage(); err != nil {
+				lock.Unlock()
+				goto ERR
+			}
 			lock.Unlock()
-			goto ERR
-		}
-		lock.Unlock()
-		//阻塞在这里，等待inChan有空闲位置。。。。
-		select {
-		case conn.inChan <- data:
-		case <-conn.closeChan: // closeChan 感知 conn断开
-			goto ERR
+			//阻塞在这里，等待inChan有空闲位置。。。。
+			//select {
+			//case conn.inChan <- data:
+			//case <-conn.closeChan: // closeChan 感知 conn断开
+			//	goto ERR
+			//}
+
 		}
 
-	}
-
-ERR:
-	conn.Close()
+	ERR:
+		conn.Close()*/
 }
 
 func (conn *WsConnection) WriteLoop(lock *sync.Mutex) {
@@ -145,11 +145,11 @@ func (conn *WsConnection) WriteLoop(lock *sync.Mutex) {
 			goto ERR
 		}
 		lock.Unlock()
-		select {
-		case data = <-conn.outChan:
-		case <-conn.closeChan:
-			goto ERR
-		}
+		//select {
+		//case data = <-conn.outChan:
+		//case <-conn.closeChan:
+		//	goto ERR
+		//}
 	}
 
 ERR:
