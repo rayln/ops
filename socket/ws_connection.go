@@ -1,16 +1,15 @@
 package socket
 
 import (
-	"errors"
 	"github.com/gorilla/websocket"
 	"sync"
 )
 
 type WsConnection struct {
 	wsConnect *websocket.Conn
-	inChan    chan []byte
-	outChan   chan []byte
-	closeChan chan byte
+	//inChan    chan []byte
+	//outChan   chan []byte
+	//closeChan chan byte
 	channelId int        //唯一标识
 	mutex     sync.Mutex // 对closeChan关闭上锁
 	isClosed  bool       // 防止closeChan被关闭多次
@@ -21,9 +20,9 @@ type WsConnection struct {
 func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 	conn = &WsConnection{
 		wsConnect: wsConn,
-		inChan:    make(chan []byte, 1000),
-		outChan:   make(chan []byte, 1000),
-		closeChan: make(chan byte, 1),
+		//inChan:    make(chan []byte, 1000),
+		//outChan:   make(chan []byte, 1000),
+		//closeChan: make(chan byte, 1),
 	}
 	//var (
 	//	readLock  sync.Mutex
@@ -39,9 +38,9 @@ func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 func InitConnectionOnly(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 	conn = &WsConnection{
 		wsConnect: wsConn,
-		inChan:    make(chan []byte, 1000),
-		outChan:   make(chan []byte, 1000),
-		closeChan: make(chan byte, 1),
+		//inChan:    make(chan []byte, 1000),
+		//outChan:   make(chan []byte, 1000),
+		//closeChan: make(chan byte, 1),
 	}
 	return
 }
@@ -52,15 +51,16 @@ func (conn *WsConnection) IsClose() bool {
 
 func (conn *WsConnection) ReadMessage() (data []byte, err error) {
 
-	select {
+	/*select {
 	case data = <-conn.inChan:
 	case <-conn.closeChan:
 		err = errors.New("connection is closed")
-	}
+	}*/
+	_, data, err = conn.wsConnect.ReadMessage()
 	return
 }
 
-func (conn *WsConnection) WriteMessage(data []byte) (err error) {
+/*func (conn *WsConnection) WriteMessage(data []byte) (err error) {
 
 	select {
 	case conn.outChan <- data:
@@ -68,7 +68,7 @@ func (conn *WsConnection) WriteMessage(data []byte) (err error) {
 		err = errors.New("connection is closed")
 	}
 	return
-}
+}*/
 
 //update
 func (conn *WsConnection) WriteMessageType(message_type int, data []byte) (err error) {
@@ -89,7 +89,7 @@ func (conn *WsConnection) Close() {
 	conn.mutex.Lock()
 	defer conn.mutex.Unlock()
 	if !conn.isClosed {
-		close(conn.closeChan)
+		//close(conn.closeChan)
 		conn.isClosed = true
 	}
 
