@@ -1,15 +1,16 @@
 package socket
 
 import (
+	"errors"
 	"github.com/gorilla/websocket"
 	"sync"
 )
 
 type WsConnection struct {
 	wsConnect *websocket.Conn
-	//inChan    chan []byte
-	//outChan   chan []byte
-	//closeChan chan byte
+	inChan    chan []byte
+	outChan   chan []byte
+	closeChan chan byte
 	channelId int        //唯一标识
 	mutex     sync.Mutex // 对closeChan关闭上锁
 	isClosed  bool       // 防止closeChan被关闭多次
@@ -20,50 +21,46 @@ type WsConnection struct {
 func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 	conn = &WsConnection{
 		wsConnect: wsConn,
-		//inChan:    make(chan []byte, 1000),
-		//outChan:   make(chan []byte, 1000),
-		//closeChan: make(chan byte, 1),
+		inChan:    make(chan []byte, 1000),
+		outChan:   make(chan []byte, 1000),
+		closeChan: make(chan byte, 1),
 	}
-	//var (
-	//	readLock  sync.Mutex
-	//	writeLock sync.Mutex
-	//)
-	//// 启动读协程
-	//go conn.ReadLoop(&readLock)
-	//// 启动写协程
-	//go conn.WriteLoop(&writeLock)
+	var (
+		readLock  sync.Mutex
+		writeLock sync.Mutex
+	)
+	// 启动读协程
+	go conn.ReadLoop(&readLock)
+	// 启动写协程
+	go conn.WriteLoop(&writeLock)
 	return
 }
 
 func InitConnectionOnly(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 	conn = &WsConnection{
 		wsConnect: wsConn,
-		//inChan:    make(chan []byte, 1000),
-		//outChan:   make(chan []byte, 1000),
-		//closeChan: make(chan byte, 1),
+		inChan:    make(chan []byte, 1000),
+		outChan:   make(chan []byte, 1000),
+		closeChan: make(chan byte, 1),
 	}
 	return
 }
 
 func (conn *WsConnection) IsClose() bool {
-	if true {
-
-	}
 	return conn.isClosed
 }
 
 func (conn *WsConnection) ReadMessage() (data []byte, err error) {
 
-	/*select {
+	select {
 	case data = <-conn.inChan:
 	case <-conn.closeChan:
 		err = errors.New("connection is closed")
-	}*/
-	_, data, err = conn.wsConnect.ReadMessage()
+	}
 	return
 }
 
-/*func (conn *WsConnection) WriteMessage(data []byte) (err error) {
+func (conn *WsConnection) WriteMessage(data []byte) (err error) {
 
 	select {
 	case conn.outChan <- data:
@@ -71,10 +68,10 @@ func (conn *WsConnection) ReadMessage() (data []byte, err error) {
 		err = errors.New("connection is closed")
 	}
 	return
-}*/
+}
 
 //update
-func (conn *WsConnection) WriteMessageType(message_type int, data []byte) (err error) {
+/*func (conn *WsConnection) WriteMessageType(message_type int, data []byte) (err error) {
 
 	//select {
 	//case conn.outChan <- data:
@@ -83,7 +80,7 @@ func (conn *WsConnection) WriteMessageType(message_type int, data []byte) (err e
 	//}
 	err = conn.wsConnect.WriteMessage(message_type, data)
 	return
-}
+}*/
 
 func (conn *WsConnection) Close() {
 	// 线程安全，可多次调用
@@ -92,7 +89,7 @@ func (conn *WsConnection) Close() {
 	conn.mutex.Lock()
 	defer conn.mutex.Unlock()
 	if !conn.isClosed {
-		//close(conn.closeChan)
+		close(conn.closeChan)
 		conn.isClosed = true
 	}
 
@@ -100,29 +97,29 @@ func (conn *WsConnection) Close() {
 
 // 内部实现
 func (conn *WsConnection) ReadLoop(lock *sync.Mutex) {
-	/*var (
-			data []byte
-			err  error
-		)
-		for {
-			// 加锁，避免报错
-			lock.Lock()
-			if _, data, err = conn.wsConnect.ReadMessage(); err != nil {
-				lock.Unlock()
-				goto ERR
-			}
+	var (
+		data []byte
+		err  error
+	)
+	for {
+		// 加锁，避免报错
+		lock.Lock()
+		if _, data, err = conn.wsConnect.ReadMessage(); err != nil {
 			lock.Unlock()
-			//阻塞在这里，等待inChan有空闲位置。。。。
-			//select {
-			//case conn.inChan <- data:
-			//case <-conn.closeChan: // closeChan 感知 conn断开
-			//	goto ERR
-			//}
-
+			goto ERR
+		}
+		lock.Unlock()
+		//阻塞在这里，等待inChan有空闲位置。。。。
+		select {
+		case conn.inChan <- data:
+		case <-conn.closeChan: // closeChan 感知 conn断开
+			goto ERR
 		}
 
-	ERR:
-		conn.Close()*/
+	}
+
+ERR:
+	conn.Close()
 }
 
 func (conn *WsConnection) WriteLoop(lock *sync.Mutex) {
@@ -132,24 +129,20 @@ func (conn *WsConnection) WriteLoop(lock *sync.Mutex) {
 	)
 
 	for {
-		/*select {
+		//再试试看！！！
+		// 加锁，避免报错。为啥没提交成功！！
+		select {
 		case data = <-conn.outChan:
 		case <-conn.closeChan:
 			goto ERR
-		}*/
-		//再试试看！！！
-		// 加锁，避免报错。为啥没提交成功！！
+		}
 		lock.Lock()
 		if err = conn.wsConnect.WriteMessage(websocket.BinaryMessage, data); err != nil {
 			lock.Unlock()
 			goto ERR
 		}
 		lock.Unlock()
-		//select {
-		//case data = <-conn.outChan:
-		//case <-conn.closeChan:
-		//	goto ERR
-		//}
+
 	}
 
 ERR:
