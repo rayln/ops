@@ -50,6 +50,10 @@ func (conn *WsConnection) IsClose() bool {
 	return conn.isClosed
 }
 
+func (conn *WsConnection) GetWsConnect() *websocket.Conn {
+	return conn.wsConnect
+}
+
 func (conn *WsConnection) ReadMessage() (data []byte, err error) {
 
 	select {
