@@ -26,10 +26,23 @@ func (that *Schedule) RunToBreak(callfunc func() bool, duration time.Duration) {
 	Loop:
 		for {
 			tiker := time.NewTicker(duration)
+			<-tiker.C
 			if callfunc() {
 				break Loop
 			}
+
+		}
+	}()
+}
+
+func (that *Schedule) Delay(callfunc func(), duration time.Duration) {
+	go func() {
+	Loop:
+		for {
+			tiker := time.NewTicker(duration)
 			<-tiker.C
+			callfunc()
+			break Loop
 		}
 	}()
 }
