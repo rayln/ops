@@ -107,12 +107,9 @@ func (conn *WsConnection) ReadLoop(lock *sync.Mutex) {
 	)
 	for {
 		// 加锁，避免报错
-		lock.Lock()
 		if _, data, err = conn.wsConnect.ReadMessage(); err != nil {
-			lock.Unlock()
 			goto ERR
 		}
-		lock.Unlock()
 		//阻塞在这里，等待inChan有空闲位置。。。。
 		select {
 		case conn.inChan <- data:
@@ -140,12 +137,9 @@ func (conn *WsConnection) WriteLoop(lock *sync.Mutex) {
 		case <-conn.closeChan:
 			goto ERR
 		}
-		lock.Lock()
 		if err = conn.wsConnect.WriteMessage(websocket.BinaryMessage, data); err != nil {
-			lock.Unlock()
 			goto ERR
 		}
-		lock.Unlock()
 
 	}
 
