@@ -19,6 +19,8 @@ type DatabaseConfig struct {
 	Dbindex      int
 	MaxIdle      int
 	MaxActive    int
+	MasterOther  []string
+	SelectOther  []string
 }
 
 func (that *DatabaseConfig) Init() *DatabaseConfig {
