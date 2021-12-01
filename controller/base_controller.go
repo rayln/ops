@@ -8,6 +8,7 @@ import (
 	"github.com/rayln/ops/entity"
 	"github.com/rayln/ops/util"
 	"runtime"
+	"xorm.io/xorm"
 )
 
 type BaseController struct {
@@ -27,6 +28,14 @@ func (that *BaseController) Begin() {
 	}
 	if that.Load == nil {
 		that.Load = that.Engine.Slave()
+	}
+	if len(that.EngineOther) > 0 {
+		that.SaveOther = make([]*xorm.EngineGroup, len(that.EngineOther))
+		that.LoadOther = make([]*xorm.Engine, len(that.EngineOther))
+	}
+	for i := 0; i < len(that.EngineOther); i++ {
+		that.SaveOther[i] = that.EngineOther[i]
+		that.LoadOther[i] = that.EngineOther[i].Slave()
 	}
 }
 

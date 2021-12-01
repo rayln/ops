@@ -9,14 +9,15 @@ import (
 
 type BaseEntity struct {
 	//SessionTmp *xorm.Session
-	Engine    *xorm.EngineGroup
-	Logger    *golog.Logger
-	Save      *xorm.Session
-	Load      *xorm.Engine
-	Redis     *util.Redis
-	App       *iris.Application
-	SaveOther []*xorm.Session
-	LoadOther []*xorm.Engine
+	Engine      *xorm.EngineGroup
+	Logger      *golog.Logger
+	Save        *xorm.Session
+	Load        *xorm.Engine
+	Redis       *util.Redis
+	App         *iris.Application
+	EngineOther []*xorm.EngineGroup
+	SaveOther   []*xorm.EngineGroup
+	LoadOther   []*xorm.Engine
 }
 
 var IsClose = false

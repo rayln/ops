@@ -6,6 +6,7 @@ import (
 	"github.com/kataras/iris/v12/mvc"
 	"github.com/rayln/ops/entity"
 	"runtime"
+	"xorm.io/xorm"
 )
 
 type BaseWsController struct {
@@ -27,6 +28,15 @@ func (that *BaseWsController) Begin() *entity.BaseEntity {
 	}
 	if entitys.Load == nil {
 		entitys.Load = that.Engine.Slave()
+	}
+	if len(that.EngineOther) > 0 {
+		entitys.EngineOther = that.EngineOther
+		entitys.SaveOther = make([]*xorm.EngineGroup, len(that.EngineOther))
+		entitys.LoadOther = make([]*xorm.Engine, len(that.EngineOther))
+	}
+	for i := 0; i < len(that.EngineOther); i++ {
+		entitys.SaveOther[i] = that.EngineOther[i]
+		entitys.LoadOther[i] = that.EngineOther[i].Slave()
 	}
 	return entitys
 }
