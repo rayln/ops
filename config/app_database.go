@@ -14,4 +14,7 @@ func InitDatabase(engine *xorm.Engine) {
 	}
 	//*******************************************************
 	//engine.ImportFile("./com/sql/farm_constant_info.sql")
+	if true {
+
+	}
 }
