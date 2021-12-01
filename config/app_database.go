@@ -12,5 +12,5 @@ func InitDatabase(engine *xorm.Engine) {
 	if err != nil {
 		panic(err.Error())
 	}
-	//engine.ImportFile("./com/sql/farm_constant_info.sql")
+	//engine.ImportFile("./com/sql/farm_constant_info.sql")111
 }
