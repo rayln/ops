@@ -9,8 +9,9 @@ import (
 
 type BaseWsEntity struct {
 	//SessionTmp *xorm.Session
-	Engine *xorm.EngineGroup
-	Logger *golog.Logger
-	Redis  *util.Redis
-	App    *iris.Application
+	Engine      *xorm.EngineGroup
+	Logger      *golog.Logger
+	Redis       *util.Redis
+	App         *iris.Application
+	EngineOther []*xorm.EngineGroup
 }
