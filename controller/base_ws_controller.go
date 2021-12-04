@@ -116,7 +116,7 @@ func (that *BaseWsController) exceptionRecover(err interface{}) *string {
 	that.Logger.Error(logMessage)
 	// 打印错误日志
 	// 返回错误信息
-	temp := "{data: \"\", code: 1, message: \"服务器出现异常，请稍后再试！\"}"
+	temp := "{data: \"\", code: 1, message: \"The server is error. Please try again at a moment!\"}"
 	return &temp
 }
 

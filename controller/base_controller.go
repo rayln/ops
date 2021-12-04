@@ -115,7 +115,7 @@ func (that *BaseController) exceptionRecover(ctx iris.Context, err interface{}) 
 	that.Logger.Error(logMessage)
 	// 打印错误日志
 	// 返回错误信息
-	ctx.JSON(util.Result{Data: "", Code: util.ERROR_CODE, Message: "服务器出现异常，请稍后再试！"})
+	ctx.JSON(util.Result{Data: "", Code: util.ERROR_CODE, Message: "The server is error. Please try again at a moment!"})
 	ctx.StatusCode(100)
 	// 停止跳转
 	//ctx.StopExecution()
