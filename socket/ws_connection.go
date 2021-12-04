@@ -33,6 +33,9 @@ func InitConnection(wsConn *websocket.Conn) (conn *WsConnection, err error) {
 	go conn.ReadLoop(&readLock)
 	// 启动写协程
 	go conn.WriteLoop(&writeLock)
+	if true {
+
+	}
 	return
 }
 
