@@ -71,7 +71,7 @@ func (that *BaseWsController) Close(entitys *entity.BaseEntity) {
 }*/
 func (that *BaseWsController) Start(serviceFunc func(*entity.BaseEntity) string) (result string) {
 	//TODO update
-	result = "{\"code\":1,\"message\":\"system error!\",\"data\":\"\",\"system_error\":1}"
+	result = "{\"code\":1,\"message\":\"system error!\",\"data\":\"\",\"error\":1}"
 	var enti = that.Begin()
 	defer that.Close(enti)
 	defer that.handleException(&result, enti)
@@ -116,7 +116,7 @@ func (that *BaseWsController) exceptionRecover(err interface{}) *string {
 	that.Logger.Error(logMessage)
 	// 打印错误日志
 	// 返回错误信息
-	temp := "{data: \"\", code: 1, message: \"The server is error. Please try again at a moment!\",\"system_error\":1}"
+	temp := "{data: \"\", code: 1, message: \"The server is error. Please try again at a moment!\",\"error\":1}"
 	return &temp
 }
 
@@ -132,7 +132,7 @@ func (that *BaseWsController) handleException(result *string, entitys *entity.Ba
 		//异常处理
 		result = that.exceptionRecover(err)
 	} else {
-		temp := "{data: \"handleException\", code: 0, message: \"\",,\"system_error\":0}"
+		temp := "{data: \"handleException\", code: 0, message: \"\",\"error\":0}"
 		result = &temp
 	}
 }
