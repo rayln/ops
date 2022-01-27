@@ -12,8 +12,9 @@ type Schedule struct {
 func (that *Schedule) Run(callfunc func(), duration time.Duration) {
 	that.isEnd = false
 	go func() {
+		tiker := time.NewTicker(duration)
+		defer tiker.Stop()
 		for {
-			tiker := time.NewTicker(duration)
 			callfunc()
 			<-tiker.C
 			if that.isEnd {
@@ -29,13 +30,12 @@ func (that *Schedule) Run(callfunc func(), duration time.Duration) {
 func (that *Schedule) RunToBreak(callfunc func() bool, duration time.Duration) {
 	that.isEnd = false
 	go func() {
-	Loop:
+		tiker := time.NewTicker(duration)
+		defer tiker.Stop()
 		for {
-
-			tiker := time.NewTicker(duration)
 			<-tiker.C
 			if callfunc() {
-				break Loop
+				break
 			}
 			if that.isEnd {
 				break
@@ -47,13 +47,12 @@ func (that *Schedule) RunToBreak(callfunc func() bool, duration time.Duration) {
 func (that *Schedule) Delay(callfunc func(), duration time.Duration) {
 	that.isEnd = false
 	go func() {
-	Loop:
+		tiker := time.NewTicker(duration)
+		defer tiker.Stop()
 		for {
-
-			tiker := time.NewTicker(duration)
 			<-tiker.C
 			callfunc()
-			break Loop
+			break
 		}
 	}()
 }
