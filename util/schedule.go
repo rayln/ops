@@ -14,10 +14,10 @@ type Schedule struct {
 定时器，根据传入的时间，进行无限循环执行任务
 */
 func (that *Schedule) Run(callfunc func(), duration time.Duration) {
-	defer that.handleException()
 	that.isEnd = false
 	go func() {
 		tiker := time.NewTicker(duration)
+		defer that.handleException()
 		defer tiker.Stop()
 		for {
 			callfunc()
@@ -33,10 +33,10 @@ func (that *Schedule) Run(callfunc func(), duration time.Duration) {
 返回true则跳出循环
 */
 func (that *Schedule) RunToBreak(callfunc func() bool, duration time.Duration) {
-	defer that.handleException()
 	that.isEnd = false
 	go func() {
 		tiker := time.NewTicker(duration)
+		defer that.handleException()
 		defer tiker.Stop()
 		for {
 			<-tiker.C
@@ -51,10 +51,10 @@ func (that *Schedule) RunToBreak(callfunc func() bool, duration time.Duration) {
 }
 
 func (that *Schedule) Delay(callfunc func(), duration time.Duration) {
-	defer that.handleException()
 	that.isEnd = false
 	go func() {
 		tiker := time.NewTicker(duration)
+		defer that.handleException()
 		defer tiker.Stop()
 		for {
 			<-tiker.C
@@ -72,7 +72,6 @@ func (that *Schedule) RemoveAllSchedule() {
 }
 
 func (that *Schedule) handleException() {
-
 	if err := recover(); err != nil {
 		that.exceptionRecover(err)
 		return
@@ -80,7 +79,6 @@ func (that *Schedule) handleException() {
 }
 
 func (that *Schedule) exceptionRecover(err interface{}) {
-
 	var stacktrace string
 	for i := 1; ; i++ {
 		_, f, l, got := runtime.Caller(i)
