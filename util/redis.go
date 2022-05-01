@@ -60,6 +60,49 @@ func (that *Redis) SetValue(key string, value interface{}, conn redis.Conn) {
 }
 
 /**
+获得value值，通过key。返回是否存在
+*/
+func (that *Redis) GetValues(key string, conn redis.Conn) (interface{}, bool) {
+	var result interface{}
+	is, err := redis.Bool(conn.Do("EXISTS", key))
+	if err != nil {
+		fmt.Println("error:", err)
+	}
+	if is {
+		_, err := conn.Do("SET", key, &result)
+		if err != nil {
+			panic(err)
+		}
+		return result, true
+	} else {
+		return result, false
+	}
+}
+
+/**
+获得map，通过key。返回是否存在
+*/
+func (that *Redis) GetMaps(key string, result interface{}, conn redis.Conn) bool {
+	is, err := redis.Bool(conn.Do("EXISTS", key))
+	if err != nil {
+		fmt.Println("error:", err)
+	}
+	if is {
+		valueGet, err := redis.Bytes(conn.Do("GET", key))
+		if err != nil {
+			panic(err)
+		}
+		err = json.Unmarshal(valueGet, &result)
+		if err != nil {
+			panic(err)
+		}
+		return true
+	} else {
+		return false
+	}
+}
+
+/**
 获取单个value值，根据key
 */
 func (that *Redis) GetValueString(key string, conn redis.Conn) string {
@@ -84,7 +127,7 @@ func (that *Redis) GetValueInt(key string, value interface{}, conn redis.Conn) i
 /**
 获取单个value值，根据key
 */
-func (that *Redis) GetValueInterface(key string, value interface{}, conn redis.Conn) interface{} {
+func (that *Redis) GetValueInterface(key string, conn redis.Conn) interface{} {
 	result, err := conn.Do("GET", key)
 	if err != nil {
 		panic(err)
